@@ -1,5 +1,5 @@
 ---
-import PortableTextRenderer from "../components/PortableTextRenderer.tsx";
+import { renderPortableText } from "../components/PortableTextRenderer.tsx";
 import { urlFor } from "~/lib/sanityImageUrl";
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import type { PortableTextBlock } from "@portabletext/types";
@@ -118,8 +118,7 @@ function formatDateTime(dateTime: string) {
         <strong>Description:</strong>
         <div
             class="prose prose-sm max-w-none text-gray-700 dark:text-gray-300 mt-1"
-        >
-            <PortableTextRenderer value={event.description} client:load />
-        </div>
+            set:html={renderPortableText(event.description)}
+        />
     </div>
 </div>

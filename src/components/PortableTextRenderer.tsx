@@ -1,70 +1,44 @@
-import { PortableText } from "@portabletext/react";
-import type {
-  PortableTextReactComponents,
-  PortableTextMarkComponentProps,
-  PortableTextBlockComponent,
-} from "@portabletext/react";
-import React from "react";
+// src/components/PortableTextRenderer.tsx (NOTE: Not a React Component anymore!)
+import { toHTML } from "@portabletext/to-html";
+import type { PortableTextBlock } from "@portabletext/types";
+import { urlFor } from "~/lib/sanityImageUrl"; // Import your existing image utility
 
-type PortableTextBlock = { _type: string } & Record<string, any>;
+type PortableTextBlockArray = PortableTextBlock[] | undefined;
 
-interface PortableTextRendererProps {
-  value: PortableTextBlock[];
-}
-
-const components: Partial<PortableTextReactComponents> = {
+const htmlComponents = {
   types: {
+    // Custom Image Block Renderer
     image: ({ value }: { value: any }) =>
-      value?.asset ? (
-        <img
-          src={value.asset.url}
-          alt={value.alt || ""}
-          style={{ maxWidth: "100%", borderRadius: "0.5rem", margin: "1rem 0" }}
-        />
-      ) : null,
+      value?.asset
+        ? // NOTE: We return a string of HTML here
+          `<img src="${urlFor(value.asset).url()}" alt="${value.alt || ""}"
+            style="max-width: 100%; border-radius: 0.5rem; margin: 1rem 0;" />`
+        : "",
   },
   marks: {
-    link: ({ children, value }: PortableTextMarkComponentProps<any>) => (
-      <a
-        href={value?.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{ color: "#0077C8", textDecoration: "underline" }}
-      >
-        {children}
+    // Custom Link Mark Renderer
+    link: ({ children, value }: any) => `
+      <a href="${value?.href}" target="_blank" rel="noopener noreferrer"
+         style="color: #0077C8; text-decoration: underline;">
+          ${children}
       </a>
-    ),
+    `,
   },
   block: {
-    h1: (({ children }) => (
-      <h1 style={{ fontSize: "2rem", fontWeight: "bold", margin: "1rem 0" }}>
-        {children}
-      </h1>
-    )) as PortableTextBlockComponent,
-    h2: (({ children }) => (
-      <h2 style={{ fontSize: "1.5rem", fontWeight: "bold", margin: "1rem 0" }}>
-        {children}
-      </h2>
-    )) as PortableTextBlockComponent,
-    h3: (({ children }) => (
-      <h3 style={{ fontSize: "1.25rem", fontWeight: "bold", margin: "1rem 0" }}>
-        {children}
-      </h3>
-    )) as PortableTextBlockComponent,
-    normal: (({ children }) => (
-      <p style={{ margin: "0.5rem 0" }}>{children}</p>
-    )) as PortableTextBlockComponent,
+    h1: ({ children }: any) =>
+      `<h1 style="font-size: 2rem; font-weight: bold; margin: 1rem 0;">${children}</h1>`,
+    h2: ({ children }: any) =>
+      `<h2 style="font-size: 1.5rem; font-weight: bold; margin: 1rem 0;">${children}</h2>`,
+    h3: ({ children }: any) =>
+      `<h3 style="font-size: 1.25rem; font-weight: bold; margin: 1rem 0;">${children}</h3>`,
+    normal: ({ children }: any) =>
+      `<p style="margin: 0.5rem 0;">${children}</p>`,
   },
 };
 
-const PortableTextRenderer: React.FC<PortableTextRendererProps> = ({
-  value,
-}) => {
+export function renderPortableText(value: PortableTextBlockArray): string {
   if (!value || !Array.isArray(value)) {
-    return null;
+    return "";
   }
-
-  return <PortableText value={value} components={components} />;
-};
-
-export default PortableTextRenderer;
+  return toHTML(value, { components: htmlComponents });
+}

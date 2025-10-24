@@ -1,8 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import AnimatedHero from "../components/AnimatedHero.astro";
-import QuickLinks from "../components/QuickLinks.tsx";
-import EventHighlightGroup from "../components/EventHighlightGroup.tsx";
+import EventHighlightGroup from "../components/EventHighlightGroup.astro";
 import { client } from "~/lib/sanityClient";
 
 const upcomingEvents = await client.fetch(
@@ -23,7 +22,6 @@ const description =
 
 <BaseLayout title={title} description={description}>
     <AnimatedHero slot="hero" />
-    <QuickLinks />
     <section class="w-full px-0 py-8 bg-white">
         <div class="container mx-auto px-4">
             <h2
