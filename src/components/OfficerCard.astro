@@ -32,7 +32,17 @@ const bgImage = officer.headshot
         ? `background-image: url('${bgImage}'); background-size: cover; background-position: center;`
         : ""}
 >
-    <div class="w-full flex flex-col items-center justify-end p-6">
+    <!-- Subtle overlay/blur behind text with custom height -->
+    <div
+        class="absolute bottom-0 left-0 w-full z-10 pointer-events-none"
+        style="height: 30%;"
+    >
+        <div class="w-full h-full bg-black/20 backdrop-blur-md rounded-t-xl">
+        </div>
+    </div>
+    <div
+        class="w-full flex flex-col items-center justify-end p-6 z-20 relative"
+    >
         <h3
             class="text-2xl font-black text-ieee-blue dark:text-ieee-orange drop-shadow-lg mb-2"
         >
