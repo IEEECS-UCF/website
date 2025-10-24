@@ -27,27 +27,26 @@ const bgImage = officer.headshot
 
 {/* Added transition, hover effect, increased padding, centered text */}
 <div
-    class="officer-card border border-gray-200 dark:border-gray-700 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out flex flex-col items-center text-center h-[48rem] relative overflow-hidden"
+    class="officer-card border border-gray-200 dark:border-gray-700 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out flex flex-col justify-end items-center text-center h-[48rem] relative overflow-hidden"
     style={bgImage
         ? `background-image: url('${bgImage}'); background-size: cover; background-position: center;`
         : ""}
 >
-    <div class="absolute inset-0 bg-black bg-opacity-40"></div>
-    <div
-        class="absolute bottom-0 left-0 w-full z-10 flex flex-col items-center justify-end p-6"
-    >
+    <div class="w-full flex flex-col items-center justify-end p-6">
         <h3
-            class="text-xl font-bold text-ieee-blue dark:text-ieee-orange drop-shadow mb-2"
+            class="text-2xl font-black text-ieee-blue dark:text-ieee-orange drop-shadow-lg mb-2"
         >
             {officer.name}
         </h3>
-        <p class="text-gray-100 dark:text-gray-200 font-bold drop-shadow mb-1">
+        <p
+            class="text-lg text-gray-100 dark:text-gray-200 font-extrabold drop-shadow-lg mb-1"
+        >
             {officer.position}
         </p>
 
         {
             (officer.year || officer.major) && (
-                <p class="text-sm text-gray-200 dark:text-gray-300 mt-1 drop-shadow font-bold mb-1">
+                <p class="text-base text-gray-200 dark:text-gray-300 mt-1 drop-shadow-lg font-bold mb-1">
                     {officer.year}
                     {officer.year && officer.major ? " • " : ""}
                     {officer.major}
@@ -57,7 +56,7 @@ const bgImage = officer.headshot
 
         {
             officer.quote && (
-                <blockquote class="text-gray-100 dark:text-gray-200 italic mt-3 text-sm border-l-2 border-ieee-orange pl-3 drop-shadow font-bold mb-2">
+                <blockquote class="text-gray-100 dark:text-gray-200 italic mt-3 text-base border-l-2 border-ieee-orange pl-3 drop-shadow-lg font-bold mb-2">
                     "{officer.quote}"
                 </blockquote>
             )
