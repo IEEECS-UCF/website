@@ -1,16 +1,7 @@
+/* src/styles/global.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer base {
-    body {
-        min-height: 100vh;
-        @apply flex flex-col min-h-screen bg-pink-100;
-    }
-    main {
-        @apply flex-grow;
-    }
-}
 
 @keyframes fadeIn {
     from {
