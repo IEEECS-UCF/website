@@ -4,8 +4,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-yarn.lock
-pnpm-lock.yaml
 
 # Build output
 dist/
@@ -16,15 +14,9 @@ build/
 .netlify/
 .tmp/
 .cache/
-astro.config.mjs
 
 # Astro output
 public/
-.snowpack/
-.svelte-kit/
-.solid/
-.solid-start/
-.solid-build/
 
 # Environment files
 .env
@@ -36,7 +28,7 @@ public/
 Thumbs.db
 *.swp
 *.swo
-*.idea/
+.idea/
 .vscode/
 *.code-workspace
 
@@ -51,4 +43,3 @@ coverage/
 *.bak
 *.tmp
 *.orig
-.vercel
