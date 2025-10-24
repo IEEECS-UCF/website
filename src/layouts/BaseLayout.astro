@@ -1,0 +1,45 @@
+---
+// src/layouts/BaseLayout.astro
+import Navbar from "~/components/Navbar.astro";
+import Footer from "~/components/Footer.astro";
+export const viewTransitions = true;
+export interface Props {
+    title: string;
+    description?: string;
+}
+
+const {
+    title,
+    description = "Official website for the IEEE Computer Society Student Chapter at UCF",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        {/* ... meta tags, title, icon ... */}
+        <meta charset="UTF-8" />
+        <meta name="description" content={description} />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+        <link rel="stylesheet" href="/src/styles/global.css" />
+
+        <style is:global>
+            @import "swiper/css";
+            @import "swiper/css/navigation";
+        </style>
+    </head>
+    {/* Apply ALL layout and style utilities directly to the body tag */}
+    <body
+        class="flex flex-col min-h-screen w-full bg-transparent dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+    >
+        <Navbar />
+        <slot name="hero" />
+        <main class="flex-grow w-full">
+            <slot />
+        </main>
+        <Footer />
+    </body>
+</html>

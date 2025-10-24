@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { client } from "~/lib/sanityClient";
+import ProjectCard from "../components/ProjectCard.astro";
+
+// Fetch all projects from Sanity, sorted by creation date (newest first)
+const projects = await client.fetch(
+    `*[_type == "project"] | order(_createdAt desc)`,
+);
+
+const title = "Projects - IEEE Computer Society @ UCF";
+const description =
+    "Explore the projects led by the IEEE Computer Society Student Chapter at UCF.";
+---
+
+<BaseLayout title={title} description={description}>
+    <main class="container mx-auto px-4 py-12">
+        <h1
+            class="text-4xl font-bold mb-8 text-center text-ieee-blue dark:text-ieee-orange"
+        >
+            Chapter Projects
+        </h1>
+        <p
+            class="text-lg text-center max-w-2xl mx-auto mb-10 text-gray-700 dark:text-gray-300"
+        >
+            Our chapter is dedicated to hands-on learning and collaboration.
+            Below are some of our ongoing and past projects. Interested in
+            joining or starting a project? <a
+                href="/join"
+                class="text-ieee-orange hover:underline font-semibold"
+                >Become a member!</a
+            >
+        </p>
+        <section class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {
+                projects.length > 0 ? (
+                    projects.map((project) => <ProjectCard project={project} />)
+                ) : (
+                    <div class="col-span-full text-center text-gray-500 dark:text-gray-400 py-12">
+                        No projects found. Check back soon!
+                    </div>
+                )
+            }
+        </section>
+    </main>
+</BaseLayout>

@@ -1,0 +1,70 @@
+---
+import "/src/styles/hero.css";
+---
+
+<section
+    class="hero w-full min-h-screen flex items-center justify-center bg-gradient-to-br from-ieee-blue to-ieee-orange text-black relative pb-16"
+    style="background-size: 200% 200%; animation: gradientMove 8s ease-in-out infinite;"
+>
+    <div class="hero-content flex flex-col items-center text-center w-full">
+        <img
+            src="/logo_notext.jpg"
+            alt="IEEE CS Logo"
+            class="h-48 w-48 rounded-full mb-10 shadow-2xl"
+        />
+        <h1
+            class="text-6xl md:text-8xl font-extrabold mb-8 drop-shadow text-black"
+        >
+            IEEE Computer Society<br />Student Chapter at UCF
+        </h1>
+        <p class="text-2xl md:text-4xl max-w-3xl mb-12 text-black">
+            Inspiring innovation, leadership, and community in computing at UCF.
+        </p>
+        <a
+            id="learn-more-btn"
+            href="/about"
+            class="learn-more-btn relative inline-block px-12 py-5 text-2xl font-semibold text-white rounded-full overflow-hidden"
+        >
+            Learn More
+        </a>
+    </div>
+    <!-- Simple crossfade gradient for clean transition -->
+    <div
+        class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-b from-transparent to-gray-50 pointer-events-none"
+    >
+    </div>
+
+    <style>
+        @keyframes gradientMove {
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+    </style>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const btn = document.getElementById("learn-more-btn");
+        if (btn) {
+            btn.addEventListener("mouseenter", () => {
+                btn.style.transform = "scale(1.08)";
+                btn.style.boxShadow = "0 0 24px #fff, 0 0 32px #fff";
+                btn.style.filter = "brightness(1.1)";
+                btn.style.transition =
+                    "transform 0.3s, box-shadow 0.3s, filter 0.3s";
+            });
+            btn.addEventListener("mouseleave", () => {
+                btn.style.transform = "";
+                btn.style.boxShadow = "";
+                btn.style.filter = "";
+                btn.style.transition =
+                    "transform 0.3s, box-shadow 0.3s, filter 0.3s";
+            });
+        }
+    });
+</script>

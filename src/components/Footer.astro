@@ -1,0 +1,35 @@
+---
+// src/components/Footer.astro
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-gray-800 text-gray-300 mt-auto py-6">
+    {/* mt-auto pushes footer down */}
+    <div class="w-full px-4 text-center text-sm flex flex-col items-center">
+        <div class="flex items-center justify-center mb-2">
+            <img
+                src="/logo_notext.jpg"
+                alt="IEEE CS Logo"
+                class="h-8 w-8 rounded-full mr-2"
+            />
+            <span>
+                &copy; {currentYear} IEEE Computer Society at UCF. All rights reserved.
+            </span>
+        </div>
+        <p class="mt-2">
+            <a href="#" class="hover:text-ieee-orange transition-colors"
+                >Discord</a
+            > |
+            <a href="#" class="hover:text-ieee-orange transition-colors"
+                >GitHub</a
+            > |
+            <a href="#" class="hover:text-ieee-orange transition-colors"
+                >Instagram</a
+            >
+            {/* Add your actual social links here */}
+        </p>
+        <p class="mt-2 text-xs text-gray-500">
+            We are the official student chapter of the IEEE Computer Society.
+        </p>
+    </div>
+</footer>

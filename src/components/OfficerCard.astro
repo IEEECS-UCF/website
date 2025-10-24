@@ -1,0 +1,83 @@
+---
+// src/components/OfficerCard.astro
+import { urlFor } from "~/lib/sanityImageUrl";
+import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
+
+export interface Props {
+    officer: {
+        name: string;
+        position: string;
+        headshot: SanityImageSource;
+        year?: string;
+        major?: string;
+        quote?: string;
+        links?: Array<{
+            _key: string;
+            title: string;
+            url: string;
+        }>;
+    };
+}
+
+const { officer } = Astro.props;
+const bgImage = officer.headshot
+    ? urlFor(officer.headshot).width(800).height(800).auto("format").url()
+    : null;
+---
+
+{/* Added transition, hover effect, increased padding, centered text */}
+<div
+    class="officer-card border border-gray-200 dark:border-gray-700 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out flex flex-col items-center text-center h-[48rem] relative overflow-hidden"
+    style={bgImage
+        ? `background-image: url('${bgImage}'); background-size: cover; background-position: center;`
+        : ""}
+>
+    <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+    <div
+        class="absolute bottom-0 left-0 w-full z-10 flex flex-col items-center justify-end p-6"
+    >
+        <h3
+            class="text-xl font-bold text-ieee-blue dark:text-ieee-orange drop-shadow mb-2"
+        >
+            {officer.name}
+        </h3>
+        <p class="text-gray-100 dark:text-gray-200 font-bold drop-shadow mb-1">
+            {officer.position}
+        </p>
+
+        {
+            (officer.year || officer.major) && (
+                <p class="text-sm text-gray-200 dark:text-gray-300 mt-1 drop-shadow font-bold mb-1">
+                    {officer.year}
+                    {officer.year && officer.major ? " • " : ""}
+                    {officer.major}
+                </p>
+            )
+        }
+
+        {
+            officer.quote && (
+                <blockquote class="text-gray-100 dark:text-gray-200 italic mt-3 text-sm border-l-2 border-ieee-orange pl-3 drop-shadow font-bold mb-2">
+                    "{officer.quote}"
+                </blockquote>
+            )
+        }
+
+        {
+            officer.links && officer.links.length > 0 && (
+                <div class="mt-2 flex flex-wrap justify-center gap-2">
+                    {officer.links.map((link) => (
+                        <a
+                            href={link.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-xs bg-blue-100 bg-opacity-80 text-ieee-blue hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:hover:bg-blue-800 rounded-full px-3 py-1 transition-colors duration-200 ease-in-out font-bold"
+                        >
+                            {link.title}
+                        </a>
+                    ))}
+                </div>
+            )
+        }
+    </div>
+</div>

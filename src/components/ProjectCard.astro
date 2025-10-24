@@ -1,0 +1,115 @@
+---
+import PortableTextRenderer from "../components/PortableTextRenderer.tsx";
+import { urlFor } from "~/lib/sanityImageUrl";
+export interface Props {
+    project: {
+        name: string;
+        description: any;
+        leads: string[];
+        subLeads?: string[];
+        subTeams?: string[];
+        photos?: any[];
+        skillsRequired?: string[];
+        recruitingStatus: string;
+        collaborator?: string;
+        meetingSchedule?: string;
+        githubLink?: string;
+    };
+}
+const { project } = Astro.props;
+---
+
+<div
+    class="project-card border border-gray-200 dark:border-gray-700 rounded-lg shadow-md p-6 flex flex-col bg-white dark:bg-gray-800 h-full transition hover:shadow-lg"
+>
+    {
+        project.photos && project.photos.length > 0 && (
+            <img
+                src={urlFor(project.photos[0])
+                    .width(600)
+                    .height(300)
+                    .auto("format")
+                    .url()}
+                alt={`Photo for ${project.name}`}
+                class="w-full h-48 object-cover rounded-md mb-4"
+                loading="lazy"
+            />
+        )
+    }
+    <h2 class="text-2xl font-bold text-ieee-orange mb-2">{project.name}</h2>
+    <div class="mb-2 text-gray-700 dark:text-gray-300">
+        <strong>Leads:</strong>
+        {project.leads.join(", ")}
+        {
+            project.subLeads && project.subLeads.length > 0 && (
+                <>
+                    <br />
+                    <strong>Sub-Leads:</strong> {project.subLeads.join(", ")}
+                </>
+            )
+        }
+        {
+            project.subTeams && project.subTeams.length > 0 && (
+                <>
+                    <br />
+                    <strong>Sub-Teams:</strong> {project.subTeams.join(", ")}
+                </>
+            )
+        }
+    </div>
+    {
+        project.collaborator && (
+            <div class="mb-2 text-gray-700 dark:text-gray-300">
+                <strong>Collaborator:</strong> {project.collaborator}
+            </div>
+        )
+    }
+    {
+        project.meetingSchedule && (
+            <div class="mb-2 text-gray-700 dark:text-gray-300">
+                <strong>Meeting Schedule:</strong> {project.meetingSchedule}
+            </div>
+        )
+    }
+    {
+        project.skillsRequired && project.skillsRequired.length > 0 && (
+            <div class="mb-2 text-gray-700 dark:text-gray-300">
+                <strong>Skills/Tech Stack:</strong>{" "}
+                {project.skillsRequired.join(", ")}
+            </div>
+        )
+    }
+    <div class="mb-4">
+        <strong>Description:</strong>
+        <div
+            class="prose prose-sm max-w-none text-gray-700 dark:text-gray-300 mt-1"
+        >
+            <PortableTextRenderer value={project.description} />
+        </div>
+    </div>
+    <div class="mt-auto flex flex-wrap gap-2 items-center">
+        <span
+            class="inline-block bg-ieee-orange text-white text-xs font-semibold px-3 py-1 rounded-full"
+        >
+            {
+                project.recruitingStatus === "active"
+                    ? "Actively Recruiting"
+                    : project.recruitingStatus === "inactive"
+                      ? "Not Recruiting"
+                      : "Recruiting Specific Roles"
+            }
+        </span>
+        {
+            project.githubLink && (
+                <a
+                    href={project.githubLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-block bg-gray-100 text-ieee-blue text-xs font-semibold px-3 py-1 rounded-full hover:bg-gray-200 transition"
+                >
+                    GitHub
+                </a>
+            )
+        }
+    </div>
+</div>

@@ -1,0 +1,54 @@
+# Node dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build output
+dist/
+build/
+.out/
+.next/
+.vercel/
+.netlify/
+.tmp/
+.cache/
+astro.config.mjs
+
+# Astro output
+public/
+.snowpack/
+.svelte-kit/
+.solid/
+.solid-start/
+.solid-build/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# OS and editor artifacts
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.idea/
+.vscode/
+*.code-workspace
+
+# Coverage and test output
+coverage/
+*.lcov
+
+# Misc
+*.log
+*.tgz
+*.zip
+*.bak
+*.tmp
+*.orig

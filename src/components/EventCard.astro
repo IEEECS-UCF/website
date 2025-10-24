@@ -1,0 +1,125 @@
+---
+import PortableTextRenderer from "../components/PortableTextRenderer.tsx";
+import { urlFor } from "~/lib/sanityImageUrl";
+import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import type { PortableTextBlock } from "@portabletext/types";
+
+// Props interface based on your Sanity schema
+export interface Props {
+    event: {
+        title: string;
+        dateTime: string;
+        audience: string;
+        eventType: string;
+        speakers?: string;
+        collaborator?: string;
+        location: string;
+        virtualLink?: string;
+        description: PortableTextBlock[];
+        flyer?: SanityImageSource;
+    };
+}
+
+const { event } = Astro.props;
+
+// Helper: Format date and time
+function formatDateTime(dateTime: string) {
+    const dateObj = new Date(dateTime);
+    const date = dateObj.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+    });
+    const time = dateObj.toLocaleTimeString("en-US", {
+        hour: "2-digit",
+        minute: "2-digit",
+    });
+    return `${date} at ${time}`;
+}
+---
+
+<div
+    class="event-card border border-gray-200 dark:border-gray-700 rounded-lg shadow-md p-6 flex flex-col bg-white dark:bg-gray-800 h-full transition hover:shadow-lg"
+>
+    {
+        event.flyer && (
+            <img
+                src={urlFor(event.flyer)
+                    .width(600)
+                    .height(300)
+                    .auto("format")
+                    .url()}
+                alt={`Flyer for ${event.title}`}
+                class="w-full h-48 object-cover rounded-md mb-4 transition-transform duration-300 hover:scale-105 cursor-pointer"
+                loading="lazy"
+                onclick={`window.open('${urlFor(event.flyer).url()}', '_blank')`}
+            />
+        )
+    }
+
+    <h2 class="text-2xl font-bold text-ieee-orange mb-2">{event.title}</h2>
+
+    <div class="flex flex-wrap gap-2 text-sm mb-3">
+        <span
+            class="inline-block bg-blue-100 text-ieee-blue px-3 py-1 rounded-full font-semibold"
+        >
+            {event.eventType}
+        </span>
+        <span
+            class="inline-block bg-gray-100 text-gray-700 px-3 py-1 rounded-full font-semibold"
+        >
+            {event.audience === "public" ? "Public" : "Members Only"}
+        </span>
+        <span
+            class="inline-block bg-gray-200 text-gray-900 px-3 py-1 rounded-full font-semibold"
+        >
+            {formatDateTime(event.dateTime)}
+        </span>
+    </div>
+
+    <div class="mb-2 text-gray-700 dark:text-gray-300">
+        <strong>Location:</strong>
+        {event.location}
+        {
+            event.virtualLink && (
+                <>
+                    {" "}
+                    |{" "}
+                    <a
+                        href={event.virtualLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-ieee-blue hover:underline"
+                    >
+                        Virtual Link
+                    </a>
+                </>
+            )
+        }
+    </div>
+
+    {
+        event.speakers && (
+            <div class="mb-2 text-gray-700 dark:text-gray-300">
+                <strong>Speaker(s):</strong> {event.speakers}
+            </div>
+        )
+    }
+
+    {
+        event.collaborator && (
+            <div class="mb-2 text-gray-700 dark:text-gray-300">
+                <strong>Collaborator:</strong> {event.collaborator}
+            </div>
+        )
+    }
+
+    <div class="mb-4">
+        <strong>Description:</strong>
+        <div
+            class="prose prose-sm max-w-none text-gray-700 dark:text-gray-300 mt-1"
+        >
+            <PortableTextRenderer value={event.description} />
+        </div>
+    </div>
+</div>

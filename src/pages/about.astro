@@ -1,0 +1,192 @@
+---
+// src/pages/about.astro
+import { client } from "~/lib/sanityClient";
+import OfficerCard from "~/components/OfficerCard.astro";
+import BaseLayout from "~/layouts/BaseLayout.astro";
+
+const officers = await client.fetch(`*[_type == "officer"] | order(name asc)`);
+---
+
+<BaseLayout title="About Us - IEEE CS @ UCF">
+    <section class="max-w-4xl mx-auto py-12 px-4">
+        <h1
+            class="text-4xl font-bold mb-8 text-center text-ieee-blue dark:text-ieee-orange"
+        >
+            About Us
+        </h1>
+
+        <div class="mb-12">
+            <h2 class="text-2xl font-bold mb-4 text-ieee-blue">About IEEE</h2>
+            <p class="mb-2 text-xl">
+                The Institute of Electrical and Electronics Engineers (IEEE) is
+                the world’s largest technical professional organization
+                dedicated to advancing technology for the benefit of humanity.
+                Founded in 1963, IEEE has over 400,000 members in more than 160
+                countries.
+            </p>
+            <p class="mb-2 text-xl">
+                IEEE’s mission is to foster technological innovation and
+                excellence for the benefit of humanity. IEEE publishes nearly a
+                third of the world’s technical literature in electrical
+                engineering, computer science, and electronics.
+            </p>
+            <a
+                href="https://www.ieee.org/"
+                target="_blank"
+                class="text-ieee-blue underline">Learn more at ieee.org</a
+            >
+        </div>
+
+        <div class="mb-12">
+            <h2 class="text-2xl font-bold mb-4 text-ieee-blue">
+                About IEEE Computer Society
+            </h2>
+            <p class="mb-2 text-xl">
+                The IEEE Computer Society (IEEE CS) is the premier organization
+                for computing professionals, with over 60,000 members worldwide.
+                IEEE CS advances the theory, practice, and application of
+                computer and information processing science and technology.
+            </p>
+            <p class="mb-2 text-xl">
+                IEEE CS offers conferences, publications, professional
+                development, and networking opportunities for students and
+                professionals in computer science and engineering.
+            </p>
+            <a
+                href="https://www.computer.org/"
+                target="_blank"
+                class="text-ieee-blue underline">Learn more at computer.org</a
+            >
+        </div>
+
+        <div class="mb-12">
+            <h2 class="text-2xl font-bold mb-4 text-ieee-blue">
+                About IEEE CS at UCF
+            </h2>
+            <p class="mb-2 text-xl">
+                The IEEE Computer Society Student Chapter at UCF is dedicated to
+                fostering innovation, leadership, and community in computing. We
+                specialize in computer and system architecture, providing
+                students with opportunities to explore hardware, systems design,
+                and cutting-edge computing technologies. We host events,
+                workshops, socials, and professional development opportunities
+                for students interested in computer science and engineering.
+            </p>
+            <p class="mb-2 text-xl">
+                <strong>How to Join:</strong> Visit our <a
+                    href="/join"
+                    class="text-ieee-orange underline">Join</a
+                > page or connect with us at our next event!
+            </p>
+        </div>
+    </section>
+
+    <div class="px-4 md:px-8">
+        <div
+            class="swiper officer-swiper relative pb-10 mb-24 group overflow-hidden"
+        >
+            <div class="swiper-wrapper">
+                {
+                    officers.map((officer) => (
+                        <div class="swiper-slide h-auto">
+                            <OfficerCard officer={officer} />
+                        </div>
+                    ))
+                }
+            </div>
+
+            {
+                /* 🛠️ FIX: Revert margin change and position buttons just inside the padding area. */
+            }
+            <div
+                class="swiper-button-prev absolute z-10 top-1/2 -translate-y-1/2 left-0
+                           text-ieee-blue dark:text-ieee-orange after:!text-2xl"
+            >
+            </div>
+
+            <div
+                class="swiper-button-next absolute z-10 top-1/2 -translate-y-1/2 right-0
+                           text-ieee-blue dark:text-ieee-orange after:!text-2xl"
+            >
+            </div>
+
+            <div
+                class="swiper-pagination absolute bottom-0 left-1/2 -translate-x-1/2"
+            >
+            </div>
+        </div>
+    </div>
+</BaseLayout>
+
+<script>
+    import Swiper from "swiper";
+    import { Navigation, Pagination, Autoplay } from "swiper/modules";
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const swiper = new Swiper(".officer-swiper", {
+            modules: [Navigation, Pagination, Autoplay],
+
+            slidesPerView: 1,
+            spaceBetween: 10,
+
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 15,
+                },
+
+                1024: {
+                    slidesPerView: 4,
+                    spaceBetween: 20,
+                },
+            },
+
+            loop: true,
+
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: true,
+            },
+
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    });
+</script>
+
+<style>
+    and
+        force
+        Swiper
+        to
+        always
+        calculate
+        width
+        based
+        on
+        the
+        content
+        box.
+        */
+        .swiper-slide {
+        height: auto;
+        display: flex;
+    }
+
+    .swiper-slide > div {
+        /* This targets the OfficerCard wrapper */
+        box-sizing: border-box !important; /* Force content box-sizing */
+        width: 100%;
+    }
+
+    .swiper-pagination-bullet-active {
+        background-color: #0077c8 !important;
+    }
+</style>
