@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "npx tailwindcss -i src/styles/global.css -o public/build/styles.css --minify && astro build",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
