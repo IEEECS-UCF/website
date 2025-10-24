@@ -14,9 +14,7 @@ build/
 .netlify/
 .tmp/
 .cache/
-
-# Astro output
-public/
+sanity/.sanity/
 
 # Environment files
 .env
