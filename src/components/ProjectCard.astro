@@ -84,7 +84,7 @@ const { project } = Astro.props;
         <div
             class="prose prose-sm max-w-none text-gray-700 dark:text-gray-300 mt-1"
         >
-            <PortableTextRenderer value={project.description} />
+            <PortableTextRenderer value={project.description} client:load />
         </div>
     </div>
     <div class="mt-auto flex flex-wrap gap-2 items-center">

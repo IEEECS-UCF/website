@@ -119,7 +119,7 @@ function formatDateTime(dateTime: string) {
         <div
             class="prose prose-sm max-w-none text-gray-700 dark:text-gray-300 mt-1"
         >
-            <PortableTextRenderer value={event.description} />
+            <PortableTextRenderer value={event.description} client:load />
         </div>
     </div>
 </div>

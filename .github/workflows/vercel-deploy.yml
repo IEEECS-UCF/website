@@ -17,7 +17,10 @@ jobs:
           cache: "npm"
 
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
+
+      - name: Re-run Astro Integration Setup
+        run: npm install @astrojs/react
 
       - name: Deploy to Vercel
         uses: amondnet/vercel-action@v25
@@ -25,10 +28,5 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-
           build-command: "rm -rf sanity && npm run build"
           vercel-args: "--prod"
-        env:
-          NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
-          NEXT_PUBLIC_SANITY_DATASET: production
-          VERCEL_BUILD_COMMAND: "rm -rf sanity && npm run build"
