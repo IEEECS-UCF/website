@@ -25,5 +25,6 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          build-command: "rm -rf sanity && npm run build"
           vercel-args: "--prod"
+        env:
+          VERCEL_BUILD_COMMAND: "rm -rf sanity && npm run build"
