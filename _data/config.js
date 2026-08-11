@@ -13,6 +13,11 @@ module.exports = {
     chapterNo: "676942",
   },
 
+  banner: {
+    src: "/assets/csglobe.png",
+    alt: "IEEE Computer Society globe logo over the horizon",
+  },
+
   nav: [
     { label: "Home", href: "index.html", current: true },
   ],

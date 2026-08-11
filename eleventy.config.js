@@ -1,8 +1,7 @@
 const readableDate = require("./lib/readable-date.js");
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addPassthroughCopy("style.css");
-  eleventyConfig.addPassthroughCopy("csglobe.png");
+  eleventyConfig.addPassthroughCopy("assets");
 
   eleventyConfig.addFilter("readableDate", readableDate);
   eleventyConfig.ignores.add("README.md");

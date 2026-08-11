@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ config.site.pageTitle }}</title>
 <meta name="description" content="{{ config.site.description }}">
-<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -23,7 +23,7 @@
 <div class="goldrule" role="presentation"></div>
 
 <div class="photo-strip">
-  <img src="/csglobe.png" alt="IEEE Computer Society globe logo over the horizon">
+  <img src="{{ config.banner.src }}" alt="{{ config.banner.alt }}">
 </div>
 
 <nav class="nav" aria-label="Primary">
