@@ -31,7 +31,7 @@
 </nav>
 
 <div class="ticker">
-  <p class="ticker-text">{{ config.ticker | safe }}</p>
+  <p class="ticker-text">{{ config.ticker | join(" &bull; ") | safe }}</p>
 </div>
 
 <main id="main" class="content">

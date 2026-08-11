@@ -18,8 +18,11 @@ module.exports = {
   ],
   // navDisabled: "disabled link",
 
-  ticker:
+  ticker: [
     "We're officially a UCF RSO! Join us on <a href='https://knightconnect.campuslabs.com/engage/organization/ieee-cs'>KnightConnect</a>!",
+    // "i wuz here",
+  ],
+
 
   news: [
     { date: "08/01/2026", text: "Join us on KnightConnect <a href='https://knightconnect.campuslabs.com/engage/organization/ieee-cs'>here</a>!" },
