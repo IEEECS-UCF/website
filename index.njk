@@ -1,0 +1,50 @@
+---
+layout: base.njk
+---
+{% set latest = collections.posts | reverse | first %}
+<h1 class="page-title">{{ latest.data.title }}</h1>
+<p class="dateline">Posted {{ latest.date | readableDate }} &#183; {{ latest.data.postedBy }}</p>
+
+<div class="prose-block">
+{{ latest.templateContent | safe }}
+</div>
+
+<h2 class="section-head">News and Announcements <span class="new-flag">New!</span></h2>
+<table class="table">
+  <caption class="visually-hidden">Recent chapter news and announcements</caption>
+  <tbody>
+    {% for item in config.news %}
+    <tr>
+      <td class="table-date">{{ item.date }}</td>
+      <td>{{ item.text | safe }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h2 class="section-head">{{ config.board.term }} Executive Board</h2>
+<table class="table">
+  <caption class="visually-hidden">Chapter executive board officers</caption>
+  <thead>
+    <tr>
+      <th scope="col">Office</th>
+      <th scope="col">Name</th>
+      <th scope="col">Standing</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for o in config.officers %}
+    <tr><td class="table-role"><b>{{ o.role }}</b></td><td>{{ o.name }}</td><td>{{ o.standing }}</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h2 class="section-head">Meeting Information</h2>
+<table class="table">
+  <caption class="visually-hidden">Chapter meeting schedule and dues</caption>
+  <tbody>
+    {% for m in config.meeting %}
+    <tr><th scope="row" class="table-label">{{ m.label }}</th><td>{{ m.value | safe }}</td></tr>
+    {% endfor %}
+  </tbody>
+</table>

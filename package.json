@@ -1,0 +1,13 @@
+{
+  "name": "ieeecs-ucf-website",
+  "private": true,
+  "scripts": {
+    "build": "eleventy",
+    "serve": "eleventy --serve",
+    "deploy": "eleventy && wrangler pages deploy out"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "wrangler": "^3.0.0"
+  }
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ config.site.pageTitle }}</title>
+<meta name="description" content="{{ config.site.description }}">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="shell">
+
+<header class="masthead">
+  <div>
+    <p class="masthead-title">{{ config.site.title }}</p>
+    <p class="masthead-sub">{{ config.site.subtitle }}</p>
+  </div>
+  <p class="masthead-id">{{ config.site.location }}<br>Chapter No. {{ config.site.chapterNo }}</p>
+</header>
+
+<div class="goldrule" role="presentation"></div>
+
+<nav class="nav" aria-label="Primary">
+  {% for item in config.nav %}
+  <a href="{{ item.href }}"{% if item.current %} aria-current="page"{% endif %}>{{ item.label }}</a>
+  <span class="nav-sep" aria-hidden="true">|</span>
+  {% endfor %}
+  <span class="nav-item-disabled" aria-disabled="true">{{ config.navDisabled }}</span>
+</nav>
+
+<div class="ticker">
+  <p class="ticker-text">{{ config.ticker | safe }}</p>
+</div>
+
+<main id="main" class="content">
+{{ content | safe }}
+</main>
+
+<footer class="footer">
+  <p class="footer-legal">
+    Last updated: {{ config.footer.updated }}<br>
+    Maintained by <a href="mailto:{{ config.footer.emailHref }}">{{ config.footer.emailText }}</a><br>
+    {{ config.footer.legal | safe }}
+  </p>
+  <div class="footer-counter">
+    <div class="counter-label">You are visitor number</div>
+    <div class="counter-digits" aria-hidden="true">{{ config.counter.digits }}</div>
+    <div class="counter-since">since {{ config.counter.since }}</div>
+  </div>
+</footer>
+
+<ul class="badges">
+  {% for badge in config.badges %}
+  <li class="badge{% if badge.variant %} badge-{{ badge.variant }}{% endif %}">{{ badge.top }}<br><b>{{ badge.bottom }}</b></li>
+  {% endfor %}
+</ul>
+
+</div>
+</body>
+</html>
