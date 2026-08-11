@@ -97,8 +97,8 @@ a:hover, a:focus { color: var(--link-hover); }
 
 .goldrule { height: 4px; background: var(--gold); }
 
-.photo-strip { height: clamp(60px, 17.4vw, 132px); overflow: hidden; }
-.photo-strip img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.photo-strip { height: clamp(60px, 17.4vw, 150px); overflow: hidden; }
+.photo-strip img { width: 100%; height: 100%; object-fit: cover; display: block; object-position: center;}
 
 /* -- navigation -- */
 

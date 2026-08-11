@@ -20,9 +20,9 @@ module.exports = {
 
   ticker: [
     "We're officially a UCF RSO! Join us on <a href='https://knightconnect.campuslabs.com/engage/organization/ieee-cs'>KnightConnect</a>!",
-    "The Outreach Chair position is currently open! For more info, join our <a href='go.csucf.org/discord'>discord</a>!",
+    "The Outreach Chair position is currently open! For more info, join our <a href='go.csucf.org/discord'>Discord</a>!",
     "Follow us on <a href='go.csucf.org/ig'>Instagram</a>!",
-    "Join us on <a href='go.csucf.org/discord'>discord</a>!",
+    // "Join us on <a href='go.csucf.org/discord'>Discord</a>!",
   ],
 
 
@@ -62,8 +62,9 @@ module.exports = {
   badges: [
     { top: "IEEE REGION 3", bottom: "STUDENT CHAPTER" },
     { top: "OFFICIAL UCF", bottom: "STUDENT RSO", variant: "gold" },
-    { top: "VALID", bottom: "HTML 5" },
+
     { top: "JOIN US ON", bottom: "KNIGHTCONNECT", variant: "knightconnect", href: "https://knightconnect.campuslabs.com/engage/organization/ieee-cs" },
+    { top: "VALID", bottom: "HTML 5" },
     { top: "UNDER", bottom: "CONSTRUCTION", variant: "construction" },
   ],
 };
