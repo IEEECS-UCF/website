@@ -14,8 +14,10 @@ module.exports = {
   },
 
   banner: {
-    src: "/assets/csglobe.png",
-    alt: "IEEE Computer Society globe logo over the horizon",
+    src: "/assets/CS_X_CS_MAIN.jpg",
+    alt: "IEEE Computer Society Main x IEEE Computer Society UCF"
+    // src: "/assets/csglobe.png",
+    // alt: "IEEE Computer Society globe logo over the horizon",
   },
 
   nav: [
