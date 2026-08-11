@@ -10,7 +10,7 @@ module.exports = {
     title: "IEEE Computer Society",
     subtitle: "University of Central Florida Student Chapter",
     location: "Orlando, Florida",
-    chapterNo: "676942",
+    chapterNo: "SBC13081",
   },
 
   banner: {
