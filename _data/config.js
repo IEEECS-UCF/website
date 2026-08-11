@@ -20,7 +20,7 @@ module.exports = {
 
   ticker: [
     "We're officially a UCF RSO! Join us on <a href='https://knightconnect.campuslabs.com/engage/organization/ieee-cs'>KnightConnect</a>!",
-    // "i wuz here",
+    "The Outreach Chair position is currently open! For more info, join our <a href='go.csucf.org/discord'>discord</a>",
   ],
 
 
