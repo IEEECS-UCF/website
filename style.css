@@ -118,7 +118,7 @@ a:hover, a:focus { color: var(--link-hover); }
   text-decoration: none;
 }
 
-.nav-item--disabled {
+.nav-item-disabled {
   color: #888888;
 }
 
@@ -193,7 +193,7 @@ a:hover, a:focus { color: var(--link-hover); }
   text-wrap: pretty;
 }
 
-.prose--last { margin-bottom: 22px; }
+.prose-last { margin-bottom: 22px; }
 
 .new-flag {
   color: var(--link-hover);
@@ -294,12 +294,20 @@ a:hover, a:focus { color: var(--link-hover); }
   text-align: center;
 }
 
-.badge--gold { background: var(--gold); color: var(--ink); }
+.badge-gold { background: var(--gold); color: var(--ink); }
 
-.badge--construction {
+.badge-construction {
   border-color: var(--link-hover);
-  background: #ffffcc;
-  color: var(--link-hover);
+  color: #fcd4d4;
+  text-shadow: 0 0 2px #ff0000, 0 0 3px #ff0000, 0 0 10px #cc0000;
+  box-shadow: 0 0 2px #ff3333, 
+            0 0 3px #ff3333, 
+            0 0 10px #ff3333;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--ink) 0 6px,
+    var(--gold) 6px 12px
+  );
   animation: blink 1.4s steps(1, end) infinite;
 }
 
@@ -309,7 +317,7 @@ a:hover, a:focus { color: var(--link-hover); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .badge--construction, .new-flag { animation: none; }
+  .badge-construction, .new-flag { animation: none; }
 }
 
 /* -- narrow screens -- */
