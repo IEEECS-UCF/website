@@ -3,6 +3,7 @@ const readableDate = require("../lib/readable-date.js");
 
 module.exports = {
   site: {
+    // this is shown in the opengraph embeds (e.g. discord)
     pageTitle: "UCF IEEE Computer Society",
     description:
       "Official site of the University of Central Florida Student Chapter of the IEEE Computer Society",
