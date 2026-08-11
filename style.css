@@ -9,6 +9,7 @@
   --ink: #000000;
   --gold: #ffcc00; /* change this if we don't become a DSSO (this is ucf gold, we've used ffcf0 before)*/
   --paper: #ffffff;
+  --paper-dim: #f1f1f1;
   --desk: #e8e8e0;      /* page background outside the shell */
   --band: #f2f2ec;      /* nav + footer bands */
   --link: #0000cc;
@@ -306,6 +307,21 @@ a:hover, a:focus { color: var(--link-hover); }
   color: #333333;
   text-align: center;
 }
+
+.badge-knightconnect { background: var(--paper); }
+.badge-knightconnect b { color: var(--link); }
+
+.badge a {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+}
+
+.badge a:hover,
+.badge a:focus {
+  text-decoration: underline;
+}
+
 
 .badge-gold { background: var(--gold); color: var(--ink); }
 

@@ -56,6 +56,7 @@ module.exports = {
     { top: "IEEE REGION 3", bottom: "STUDENT CHAPTER" },
     { top: "OFFICIAL UCF", bottom: "STUDENT RSO", variant: "gold" },
     { top: "VALID", bottom: "HTML 5" },
+    { top: "JOIN US ON", bottom: "KNIGHTCONNECT", variant: "knightconnect", href: "https://knightconnect.campuslabs.com/engage/organization/ieee-cs" },
     { top: "UNDER", bottom: "CONSTRUCTION", variant: "construction" },
   ],
 };

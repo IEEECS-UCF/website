@@ -53,7 +53,7 @@
 
 <ul class="badges">
   {% for badge in config.badges %}
-  <li class="badge{% if badge.variant %} badge-{{ badge.variant }}{% endif %}">{{ badge.top }}<br><b>{{ badge.bottom }}</b></li>
+  <li class="badge{% if badge.variant %} badge-{{ badge.variant }}{% endif %}">{% if badge.href %}<a href="{{ badge.href }}">{% endif %}{{ badge.top }}<br><b>{{ badge.bottom }}</b>{% if badge.href %}</a>{% endif %}</li>
   {% endfor %}
 </ul>
 
