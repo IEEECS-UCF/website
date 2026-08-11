@@ -24,7 +24,7 @@ layout: base.njk
 
 <h2 class="section-head">{{ config.board.term }} Executive Board</h2>
 <table class="table">
-  <caption class="visually-hidden">Chapter executive board officers</caption>
+  <caption class="visually-hidden">Executive board officers</caption>
   <thead>
     <tr>
       <th scope="col">Office</th>
@@ -39,9 +39,9 @@ layout: base.njk
   </tbody>
 </table>
 
-<h2 class="section-head">Meeting Information</h2>
+<h2 class="section-head">Upcoming Meetings</h2>
 <table class="table">
-  <caption class="visually-hidden">Chapter meeting schedule and dues</caption>
+  <caption class="visually-hidden">Meeting schedule</caption>
   <tbody>
     {% for m in config.meeting %}
     <tr><th scope="row" class="table-label">{{ m.label }}</th><td>{{ m.value | safe }}</td></tr>

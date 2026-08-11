@@ -20,7 +20,9 @@ module.exports = {
 
   ticker: [
     "We're officially a UCF RSO! Join us on <a href='https://knightconnect.campuslabs.com/engage/organization/ieee-cs'>KnightConnect</a>!",
-    "The Outreach Chair position is currently open! For more info, join our <a href='go.csucf.org/discord'>discord</a>",
+    "The Outreach Chair position is currently open! For more info, join our <a href='go.csucf.org/discord'>discord</a>!",
+    "Follow us on <a href='go.csucf.org/ig'>Instagram</a>!",
+    "Join us on <a href='go.csucf.org/discord'>discord</a>!",
   ],
 
 
@@ -44,6 +46,7 @@ module.exports = {
   ],
 
   meeting: [
+    { label: "TechX", value: "TBA" },
     { label: "General Body", value: "TBA" },
   ],
 
