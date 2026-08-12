@@ -1,3 +1,8 @@
 name = "ieeecs-ucf-website"
 compatibility_date = "2026-08-11"
 pages_build_output_dir = "out"
+
+[[kv_namespaces]]
+binding = "COUNTER"
+id = "7b550d2993d346f1bec164554f8b76ab"
+preview_id = "4afeed6baa634204ac3399a29659e669"

@@ -50,7 +50,7 @@
   </p>
   <div class="footer-counter">
     <div class="counter-label">You are visitor number</div>
-    <div class="counter-digits" aria-hidden="true">{{ config.counter.digits }}</div>
+    <div class="counter-digits" id="counter-digits" aria-hidden="true">{{ config.counter.digits }}</div>
     <div class="counter-since">since {{ config.counter.since }}</div>
   </div>
 </footer>
@@ -62,5 +62,15 @@
 </ul>
 
 </div>
+
+<script>
+  fetch("/counter")
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      document.getElementById("counter-digits").textContent =
+        String(d.count).padStart(6, "0");
+    })
+    .catch(function () {});
+</script>
 </body>
 </html>
