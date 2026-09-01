@@ -70,6 +70,8 @@ module.exports = {
     { top: "IEEE REGION 3", bottom: "STUDENT CHAPTER" },
     { top: "OFFICIAL UCF", bottom: "STUDENT RSO", variant: "gold" },
 
+    { top: "JOIN OUR", bottom: "DISCORD", variant: "knightconnect", href: "https://go.csucf.org/discord" },
+    { top: "FOLLOW US ON", bottom: "INSTAGRAM", variant: "knightconnect", href: "https://go.csucf.org/ig" },
     { top: "JOIN US ON", bottom: "KNIGHTCONNECT", variant: "knightconnect", href: "https://knightconnect.campuslabs.com/engage/organization/ieee-cs" },
     { top: "VALID", bottom: "HTML 5" },
     { top: "UNDER", bottom: "CONSTRUCTION", variant: "construction" },
