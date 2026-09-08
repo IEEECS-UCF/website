@@ -27,9 +27,8 @@ module.exports = {
 
   ticker: [
     "We're officially a UCF RSO! Join us on <a href='https://knightconnect.campuslabs.com/engage/organization/ieee-cs'>KnightConnect</a>!",
-    "The Outreach Chair position is currently open! For more info, join our <a href='go.csucf.org/discord'>Discord</a>!",
     "Follow us on <a href='go.csucf.org/ig'>Instagram</a>!",
-    // "Join us on <a href='go.csucf.org/discord'>Discord</a>!",
+    "Join us on <a href='go.csucf.org/discord'>Discord</a>!",
   ],
 
 
@@ -39,17 +38,17 @@ module.exports = {
 
   board: { term: "2026–2027" },
   officers: [
-    { role: "President", name: "Eren Siegman", standing: "-" },
-    { role: "Vice President", name: "Rafeed Khan", standing: "-" },
-    { role: "Secretary", name: "Dawn Balaschak", standing: "-" },
-    { role: "Treasurer", name: "Harrison Hilpert", standing: "-" },
-    { role: "Graduate Student Advisor", name: "Michael Castiglia", standing: "-" },
-    { role: "Marketing Chair", name: "Yacobe Amin", standing: "-" },
-    { role: "Design Chair", name: "Leah Greco", standing: "-" },
-    { role: "Workshop Chair", name: "Richard Hammingh", standing: "-" },
-    { role: "Software Chair", name: "Nishant Gandhi", standing: "-" },
-    { role: "Project Chair", name: "Ayman lastname", standing: "-" },
-    { role: "Outreach Chair", name: "Vacant", standing: "-" },
+    { role: "President", name: "Eren Siegman" },
+    { role: "Vice President", name: "Rafeed Khan" },
+    { role: "Secretary", name: "Dawn Balaschak" },
+    { role: "Treasurer", name: "Harrison Hilpert" },
+    { role: "Graduate Student Advisor", name: "Michael Castiglia" },
+    { role: "Marketing Chair", name: "Yacobe Amin" },
+    { role: "Design Chair", name: "Leah Greco" },
+    { role: "Workshop Chair", name: "Richard Hammingh" },
+    { role: "Software Chair", name: "Nishant Gandhi" },
+    { role: "Project Chair", name: "Ayman Bennani" },
+    { role: "Outreach Chair", name: "Jack Vertus" },
   ],
 
   meeting: [
