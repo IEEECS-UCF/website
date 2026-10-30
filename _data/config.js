@@ -48,7 +48,7 @@ module.exports = {
     { role: "Design Chair", name: "Leah Greco" },
     { role: "Workshop Chair", name: "Richard Hammingh" },
     { role: "Software Chair", name: "Nishant Gandhi" },
-    { role: "Project Chair", name: "Vacant" },
+    { role: "Project Chair", name: "Ethan Willover" },
     { role: "Outreach Chair", name: "Jack Vertus" },
   ],
 
