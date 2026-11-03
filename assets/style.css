@@ -249,10 +249,10 @@ a:hover, a:focus { color: var(--link-hover); }
   font-family: var(--ui);
   font-size: 12px;
   font-weight: bold;
-  width: 38%;
+  width: 28%;
 }
 
-.table-role { width: 38%; }
+.table-role { width: 28%; }
 
 .table-date {
   white-space: nowrap;
