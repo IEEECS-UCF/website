@@ -1,0 +1,30 @@
+---
+permalink: /privacy.html
+eleventyExcludeFromCollections: true
+---
+{#- Only reachable by its URL (Google's sign-in screen for the chapter's Discord bot
+    links here). Nothing on the site links to it, it isn't in the sitemap, and
+    search engines are asked to skip it. -#}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Privacy · {{ config.site.pageTitle }}</title>
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<div class="shell">
+<main id="main">
+<h1 class="page-title">Privacy</h1>
+<div class="prose-block">
+<p>The {{ config.site.pageTitle }} website doesn't collect personal information, use tracking cookies, or run ads. It keeps one anonymous count of visits.</p>
+<p>Our Discord bot uses the chapter's own Google account (ieeecsucf@gmail.com) to organize the chapter's files in Google Drive when officers ask it to. It only accesses that account's Drive, and it doesn't access, store or share anyone else's Google data.</p>
+<p>Questions: <a href="mailto:{{ config.footer.emailHref }}">{{ config.footer.emailText }}</a></p>
+</div>
+</main>
+</div>
+</body>
+</html>
