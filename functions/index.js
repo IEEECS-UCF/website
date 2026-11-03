@@ -3,7 +3,7 @@
 // Google Calendar there, so this shows the same events Discord does.
 // If Discord can't be reached, the page keeps the fallback row from index.njk.
 
-const SHOWN = 3;
+const SHOWN = 6;
 const CACHE_SECONDS = 600;
 const TZ = "America/New_York";
 
@@ -18,7 +18,7 @@ export async function onRequestGet({ request, env, next, waitUntil }) {
   }
   if (!events.length) return page;
 
-  const rows = events.map((e) => row(e, env.DISCORD_GUILD_ID)).join("\n");
+  const rows = events.slice(0, SHOWN).map((e) => row(e, env.DISCORD_GUILD_ID)).join("\n");
   return new HTMLRewriter()
     .on("#events-body", { element: (el) => el.setInnerContent(rows, { html: true }) })
     .transform(page);
@@ -38,7 +38,6 @@ async function upcomingEvents(request, env, waitUntil) {
   const events = (await r.json())
     .filter((e) => e.status === 1 || e.status === 2) // scheduled or happening now
     .sort((a, b) => Date.parse(a.scheduled_start_time) - Date.parse(b.scheduled_start_time))
-    .slice(0, SHOWN)
     .map((e) => ({
       id: e.id,
       name: e.name,
