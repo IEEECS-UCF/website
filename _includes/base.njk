@@ -14,6 +14,23 @@
 <meta property="og:image" content="{{ config.site.url }}{{ config.banner.src }}">
 <meta property="og:image:alt" content="{{ config.banner.alt }}">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" href="/assets/icon-48.png" type="image/png" sizes="48x48">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{{ {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": config.site.pageTitle,
+  "alternateName": ["IEEE CS UCF", "UCF IEEE Computer Society", "IEEE Computer Society UCF Student Chapter"],
+  "url": config.site.url + "/",
+  "logo": config.site.url + "/assets/logo.png",
+  "description": config.site.description,
+  "email": config.footer.emailText,
+  "parentOrganization": { "@type": "Organization", "name": "IEEE Computer Society", "url": "https://www.computer.org/" },
+  "sameAs": [config.links.instagram, config.links.linkedin, config.links.github, config.links.knightconnect, config.links.discord]
+} | dump(2) | safe }}
+</script>
 <link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>

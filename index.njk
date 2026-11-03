@@ -30,6 +30,17 @@ layout: base.njk
   </tbody>
 </table>
 
+<h2 class="section-head">Get Involved</h2>
+<div class="prose-block"><p>No experience needed, and all majors are welcome.</p></div>
+<table class="table">
+  <caption class="visually-hidden">Ways to get involved</caption>
+  <tbody>
+    {% for g in config.getInvolved %}
+    <tr><th scope="row" class="table-label">{{ g.label }}</th><td>{{ g.value | safe }}</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+
 <h2 class="section-head">{{ config.board.term }} Executive Board</h2>
 <table class="table">
   <caption class="visually-hidden">Executive board officers</caption>
@@ -41,7 +52,7 @@ layout: base.njk
   </thead>
   <tbody>
     {% for o in config.officers %}
-    <tr><td class="table-role"><b>{{ o.role }}</b></td><td>{{ o.name }}</td><td>{{ o.standing }}</td></tr>
+    <tr><td class="table-role"><b>{{ o.role }}</b></td><td>{{ o.name }}</td></tr>
     {% endfor %}
   </tbody>
 </table>

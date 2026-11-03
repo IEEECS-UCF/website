@@ -1,7 +1,17 @@
 // everything on the page that isn't a post
 const readableDate = require("../lib/readable-date.js");
 
+const links = {
+  discord: "https://go.csucf.org/discord",
+  instagram: "https://www.instagram.com/ieeecsucf",
+  linkedin: "https://www.linkedin.com/company/ieee-computer-society-at-ucf",
+  github: "https://github.com/IEEECS-UCF",
+  knightconnect: "https://knightconnect.campuslabs.com/engage/organization/ieee-cs",
+};
+
 module.exports = {
+  links,
+
   site: {
     // this is shown in the opengraph embeds (e.g. discord)
     pageTitle: "IEEE Computer Society at UCF",
@@ -34,6 +44,8 @@ module.exports = {
 
 
   news: [
+    { date: "11/02/2026", text: `We're on LinkedIn! Follow us <a href="${links.linkedin}">here</a> for event recaps.` },
+    { date: "11/02/2026", text: `Missed a workshop? Slides and code from Linux, Embedded and GPU Kernels are on our <a href="${links.github}">GitHub</a>.` },
     { date: "08/01/2026", text: "Join us on KnightConnect <a href='https://knightconnect.campuslabs.com/engage/organization/ieee-cs'>here</a>!" },
   ],
 
@@ -52,6 +64,13 @@ module.exports = {
     { role: "Outreach Chair", name: "Jack Vertus" },
   ],
 
+  getInvolved: [
+    { label: "Discord", value: `Join our <a href="${links.discord}">Discord</a> for events, announcements and help from other members.` },
+    { label: "KnightConnect", value: `Join us on <a href="${links.knightconnect}">KnightConnect</a> to RSVP for events.` },
+    { label: "IEEE CS Membership", value: `Go to <a href="https://www.computer.org/">computer.org</a>, click Join Us, choose Student IEEE &amp; CS, and use code <b>CSCONF27S</b> at checkout. Then send an officer your member number on Discord.` },
+    { label: "Follow Us", value: `<a href="${links.instagram}">Instagram</a> &#183; <a href="${links.linkedin}">LinkedIn</a> &#183; <a href="${links.github}">GitHub</a>` },
+  ],
+
   // functions/index.js swaps this row for the next events on Discord
   eventsFallback: "Check our <a href='https://go.csucf.org/discord'>Discord</a> for upcoming events.",
 
@@ -62,7 +81,8 @@ module.exports = {
     legal: "Copyright &#169; smile :)",
   },
 
-  counter: { digits: String(Math.floor(Math.random()*999999)).padStart(6, '0'), since: "08/11/2026" },
+  // functions/index.js fills in the real count
+  counter: { digits: "000000", since: "08/11/2026" },
 
   badges: [
     { top: "IEEE REGION 3", bottom: "STUDENT CHAPTER" },
