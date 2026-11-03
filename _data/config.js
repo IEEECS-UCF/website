@@ -67,7 +67,6 @@ module.exports = {
   getInvolved: [
     { label: "Discord", value: `Join our <a href="${links.discord}">Discord</a> for events, announcements and help from other members.` },
     { label: "KnightConnect", value: `Join us on <a href="${links.knightconnect}">KnightConnect</a> to RSVP for events.` },
-    { label: "IEEE CS Membership", value: `Go to <a href="https://www.computer.org/">computer.org</a>, click Join Us, choose Student IEEE &amp; CS, and use code <b>CSCONF27S</b> at checkout. Then send an officer your member number on Discord.` },
     { label: "Follow Us", value: `<a href="${links.instagram}">Instagram</a> &#183; <a href="${links.linkedin}">LinkedIn</a> &#183; <a href="${links.github}">GitHub</a>` },
   ],
 
