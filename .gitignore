@@ -2,3 +2,4 @@ sample/
 node_modules/
 out/
 .wrangler/
+.dev.vars

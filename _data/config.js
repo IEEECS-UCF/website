@@ -4,10 +4,11 @@ const readableDate = require("../lib/readable-date.js");
 module.exports = {
   site: {
     // this is shown in the opengraph embeds (e.g. discord)
-    pageTitle: "UCF IEEE Computer Society",
+    pageTitle: "IEEE Computer Society at UCF",
     description:
-      "Official site of the University of Central Florida Student Chapter of the IEEE Computer Society",
+      "IEEE Computer Society student chapter at UCF for computer architecture, systems programming, GPUs, embedded and HPC. All majors welcome.",
     title: "IEEE Computer Society",
+    url: "https://csucf.org",
     subtitle: "University of Central Florida Student Chapter",
     location: "Orlando, Florida",
     chapterNo: "SBC13081",
@@ -26,10 +27,9 @@ module.exports = {
   // navDisabled: "disabled link",
 
   ticker: [
-    "The Project Chair position is currently open! For more info, join our <a href='go.csucf.org/discord'>Discord</a>!",
     "We're an official UCF RSO! Join us on <a href='https://knightconnect.campuslabs.com/engage/organization/ieee-cs'>KnightConnect</a>!",
-    "Follow us on <a href='go.csucf.org/ig'>Instagram</a>!",
-    "Join us on <a href='go.csucf.org/discord'>Discord</a>!",
+    "Follow us on <a href='https://go.csucf.org/ig'>Instagram</a>!",
+    "Join us on <a href='https://go.csucf.org/discord'>Discord</a>!",
   ],
 
 
@@ -52,10 +52,8 @@ module.exports = {
     { role: "Outreach Chair", name: "Jack Vertus" },
   ],
 
-  meeting: [
-    { label: "TechX", value: "TBA" },
-    { label: "General Body", value: "TBA" },
-  ],
+  // functions/index.js swaps this row for the next events on Discord
+  eventsFallback: "Check our <a href='https://go.csucf.org/discord'>Discord</a> for upcoming events.",
 
   footer: {
     updated: readableDate(new Date(), "America/New_York"),
@@ -73,6 +71,8 @@ module.exports = {
     { top: "JOIN OUR", bottom: "DISCORD", variant: "knightconnect", href: "https://go.csucf.org/discord" },
     { top: "FOLLOW US ON", bottom: "INSTAGRAM", variant: "knightconnect", href: "https://go.csucf.org/ig" },
     { top: "JOIN US ON", bottom: "KNIGHTCONNECT", variant: "knightconnect", href: "https://knightconnect.campuslabs.com/engage/organization/ieee-cs" },
+    { top: "FOLLOW US ON", bottom: "LINKEDIN", variant: "knightconnect", href: "https://www.linkedin.com/company/ieee-computer-society-at-ucf" },
+    { top: "SEE OUR", bottom: "GITHUB", variant: "knightconnect", href: "https://github.com/IEEECS-UCF" },
     { top: "VALID", bottom: "HTML 5" },
     { top: "UNDER", bottom: "CONSTRUCTION", variant: "construction" },
   ],

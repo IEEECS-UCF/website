@@ -6,3 +6,8 @@ pages_build_output_dir = "out"
 binding = "COUNTER"
 id = "7b550d2993d346f1bec164554f8b76ab"
 preview_id = "4afeed6baa634204ac3399a29659e669"
+
+# Discord server the home page's events come from. DISCORD_BOT_TOKEN is a
+# secret: wrangler pages secret put DISCORD_BOT_TOKEN (or .dev.vars locally)
+[vars]
+DISCORD_GUILD_ID = "1424604734022484048"

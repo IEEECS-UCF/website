@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ config.site.pageTitle }}</title>
 <meta name="description" content="{{ config.site.description }}">
+<link rel="canonical" href="{{ config.site.url }}/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{ config.site.pageTitle }}">
+<meta property="og:title" content="{{ config.site.pageTitle }}">
+<meta property="og:description" content="{{ config.site.description }}">
+<meta property="og:url" content="{{ config.site.url }}/">
+<meta property="og:image" content="{{ config.site.url }}{{ config.banner.src }}">
+<meta property="og:image:alt" content="{{ config.banner.alt }}">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>

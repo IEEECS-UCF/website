@@ -25,10 +25,8 @@ layout: base.njk
 <h2 class="section-head">Upcoming Meetings & Events</h2>
 <table class="table">
   <caption class="visually-hidden">Events and meetings schedule</caption>
-  <tbody>
-    {% for m in config.meeting %}
-    <tr><th scope="row" class="table-label">{{ m.label }}</th><td>{{ m.value | safe }}</td></tr>
-    {% endfor %}
+  <tbody id="events-body">
+    <tr><th scope="row" class="table-label">Coming soon</th><td>{{ config.eventsFallback | safe }}</td></tr>
   </tbody>
 </table>
 
