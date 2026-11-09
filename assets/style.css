@@ -372,3 +372,48 @@ a:hover, a:focus { color: var(--link-hover); }
   .table tr { display: block; border-bottom: 1px solid var(--hair); padding: 6px 0; }
   .table thead { display: none; }
 }
+
+/* techx page: laid out like a chip datasheet. SYP palette (Prussian Blue, Heat Wave), Montserrat headings (TechX brand guidelines) */
+  .ds { --blue: #00629b; --orange: #ffa300; --ink: #111418; --mono: "IBM Plex Mono", Menlo, monospace; font: 15px/1.55 "Open Sans", var(--ui); color: var(--ink); }
+  .ds-title { display: grid; grid-template-columns: auto 1fr; gap: 0; border: 2px solid var(--ink); }
+  .ds-title .lock { position: relative; width: 250px; padding: 16px 18px 20px; border-right: 2px solid var(--ink); }
+  .ds-title .lock img { width: 100%; display: block; }
+  .ds-title .lock span { position: absolute; right: 18px; bottom: 10px; font: italic 800 19px/1 Montserrat; }
+  .ds-title .meta { display: grid; grid-template-rows: auto 1fr auto; }
+  .ds-title .meta p { margin: 0; padding: 8px 12px; font: 600 11px/1.4 var(--mono); letter-spacing: .04em; border-bottom: 1px solid var(--ink); display: flex; justify-content: space-between; gap: 10px; }
+  .ds-title h1 { margin: 0; padding: 12px; font: 800 clamp(24px, 4.2vw, 34px)/1.05 Montserrat; align-self: center; }
+  .ds-title h1 small { display: block; margin-top: 6px; font: 600 13px/1.35 "Open Sans"; color: #4a5058; }
+  .ds-title .logos { display: flex; align-items: center; gap: 14px; padding: 9px 12px; border-top: 1px solid var(--ink); }
+  .ds-title .logos img { height: 22px; width: auto; display: block; }
+  .ds-title .logos .ieee { height: 14px; margin-left: auto; }
+  .ds h2 { margin: 30px 0 10px; font: 800 18px/1.2 Montserrat; display: flex; gap: 12px; align-items: baseline; border-bottom: 3px solid var(--orange); padding-bottom: 6px; }
+  .ds h2 .n { font: 600 14px/1 var(--mono); color: var(--blue); }
+  .ds p { margin: 0 0 10px; }
+  .reg { margin: 18px 0 6px; }
+  .reg .bits, .reg .cells, .reg .names { display: grid; grid-template-columns: 2fr 3fr 2fr 4fr; }
+  .reg .bits span { font: 400 11px/1 var(--mono); color: #6b7179; display: flex; justify-content: space-between; padding: 0 3px 4px; }
+  .reg .cells span { border: 2px solid var(--ink); margin-left: -2px; padding: 14px 4px; text-align: center; font: 800 clamp(15px, 3.4vw, 26px)/1 Montserrat; white-space: nowrap; }
+  .reg .cells span:first-child { margin-left: 0; }
+  .reg .cells span.hi { background: var(--orange); }
+  .reg .names span { font: 600 11px/1 var(--mono); color: var(--blue); text-align: center; padding-top: 6px; letter-spacing: .06em; }
+  .reg-cap { font: 400 12px/1.4 var(--mono); color: #6b7179; margin: 6px 0 0; }
+  .ds table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .ds th, .ds td { text-align: left; vertical-align: top; padding: 9px 10px; border-bottom: 1px solid #d5d9de; }
+  .ds thead th { font: 600 11px/1.3 var(--mono); letter-spacing: .06em; color: #fff; background: var(--ink); border: 0; }
+  .ds td.sig { font: 600 13px/1.4 var(--mono); color: var(--blue); white-space: nowrap; }
+  .ds td.due { white-space: nowrap; font-family: var(--mono); font-size: 13px; }
+  .ds .go { display: inline-block; margin: 14px 0 4px; background: var(--orange); color: var(--ink); text-decoration: none; font: 800 16px/1 Montserrat; padding: 13px 22px; border: 2px solid var(--ink); box-shadow: 4px 4px 0 var(--ink); }
+  .ds .go:hover, .ds .go:focus { background: var(--ink); color: #fff; }
+  .ds ul.feat { margin: 0; padding: 0 0 0 18px; columns: 2; column-gap: 28px; }
+  .ds ul.feat li { margin: 0 0 4px; break-inside: avoid; }
+  @media (max-width: 620px) {
+    .ds-title { grid-template-columns: 1fr; }
+    .ds-title .lock { width: auto; max-width: 300px; border-right: 0; border-bottom: 2px solid var(--ink); }
+    .reg .bits { display: none; }
+    .reg .cells, .reg .names { grid-template-columns: 1fr 1fr; }
+    .reg .cells span:nth-child(3) { margin-left: 0; }
+    .reg .cells span { margin-top: -2px; }
+    .reg .names { display: none; }
+    .ds ul.feat { columns: 1; }
+    .ds td.due { white-space: normal; }
+  }

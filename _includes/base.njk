@@ -3,14 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{ config.site.pageTitle }}</title>
-<meta name="description" content="{{ config.site.description }}">
-<link rel="canonical" href="{{ config.site.url }}/">
+{%- set pageUrl = config.site.url + ("/" if page.url == "/" else page.url) -%}
+{%- set pageDescription = description or config.site.description -%}
+<title>{% if title %}{{ title }} · {% endif %}{{ config.site.pageTitle }}</title>
+<meta name="description" content="{{ pageDescription }}">
+<link rel="canonical" href="{{ pageUrl }}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{{ config.site.pageTitle }}">
-<meta property="og:title" content="{{ config.site.pageTitle }}">
-<meta property="og:description" content="{{ config.site.description }}">
-<meta property="og:url" content="{{ config.site.url }}/">
+<meta property="og:title" content="{% if title %}{{ title }} · {% endif %}{{ config.site.pageTitle }}">
+<meta property="og:description" content="{{ pageDescription }}">
+<meta property="og:url" content="{{ pageUrl }}">
 <meta property="og:image" content="{{ config.site.url }}{{ config.banner.src }}">
 <meta property="og:image:alt" content="{{ config.banner.alt }}">
 <meta name="twitter:card" content="summary_large_image">
@@ -31,7 +33,9 @@
   "sameAs": [config.links.instagram, config.links.linkedin, config.links.github, config.links.knightconnect, config.links.discord]
 } | dump(2) | safe }}
 </script>
-<link rel="stylesheet" href="/assets/style.css">
+{% if fonts %}<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="{{ fonts }}">
+{% endif %}<link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -54,7 +58,7 @@
 
 <nav class="nav" aria-label="Primary">
   {% for item in config.nav %}
-  <a href="{{ item.href }}"{% if item.current %} aria-current="page"{% endif %}>{{ item.label }}</a>
+  <a href="{{ item.href }}"{% if item.page == page.url %} aria-current="page"{% endif %}>{{ item.label }}</a>
   <span class="nav-sep" aria-hidden="true">|</span>
   {% endfor %}
   <span class="nav-item-disabled" aria-disabled="true">{{ config.navDisabled }}</span>

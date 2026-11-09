@@ -32,7 +32,9 @@ module.exports = {
   },
 
   nav: [
-    { label: "Home", href: "index.html", current: true },
+    { label: "Home", href: "index.html", page: "/" },
+    { label: "Projects", href: "projects.html", page: "/projects.html" },
+    { label: "TechX", href: "techx.html", page: "/techx.html" },
   ],
   // navDisabled: "disabled link",
 
