@@ -3,6 +3,8 @@ layout: base.njk
 permalink: /techx.html
 title: "TechX: Bare Metal"
 description: "Free one-day event at UCF on Saturday, January 23, 2027, on computer architecture and low-level programming. Part of the IEEE CS SYP TechX series."
+ogImage: /assets/techx/techx-og.png
+ogImageAlt: "TechX: Bare Metal flyer: free one-day event, Saturday, January 23, 2027 at UCF. Register at csucf.org/techx"
 fonts: "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;0,800;1,800&family=IBM+Plex+Mono:wght@400;600&family=Open+Sans:wght@400;600&display=swap"
 ---
 {#- laid out like a chip datasheet / register reference. Facts live in _data/techx.js. -#}
@@ -20,7 +22,7 @@ fonts: "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;0,80
   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
   "isAccessibleForFree": true,
   "url": config.site.url + "/techx",
-  "image": [config.site.url + "/assets/techx/techx-logo.png"],
+  "image": [config.site.url + "/assets/techx/techx-register-flyer.png", config.site.url + "/assets/techx/techx-og.png"],
   "location": { "@type": "Place", "name": "Live Oak Event Center, Ferrell Commons, University of Central Florida", "address": { "@type": "PostalAddress", "streetAddress": "4000 Central Florida Blvd", "addressLocality": "Orlando", "addressRegion": "FL", "postalCode": "32816", "addressCountry": "US" } },
   "offers": { "@type": "Offer", "price": 0, "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": t.links.register },
   "performer": { "@type": "Organization", "name": config.site.pageTitle, "url": config.site.url + "/" },
@@ -48,6 +50,7 @@ fonts: "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;0,80
   </div>
   <p class="reg-cap">{{ t.place }}, Orlando.</p>
   <a class="go" href="{{ t.links.register }}">Register on vTools &#8594;</a>
+  <p class="reg-cap"><a href="/assets/techx/techx-register-flyer.png">Flyer (PNG)</a></p>
 
   <h2><span class="n">1</span>Overview</h2>
   <p>TechX: Bare Metal is a free one-day event at UCF on computer architecture and low-level programming, hosted by IEEE Computer Society at UCF as part of IEEE CS SYP TechX. The day has talks, panels, workshops and Nano Mentoring.</p>

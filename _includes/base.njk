@@ -14,8 +14,8 @@
 <meta property="og:title" content="{% if title %}{{ title }} · {% endif %}{{ config.site.pageTitle }}">
 <meta property="og:description" content="{{ pageDescription }}">
 <meta property="og:url" content="{{ pageUrl }}">
-<meta property="og:image" content="{{ config.site.url }}{{ config.banner.src }}">
-<meta property="og:image:alt" content="{{ config.banner.alt }}">
+<meta property="og:image" content="{{ config.site.url }}{{ ogImage or config.banner.src }}">
+<meta property="og:image:alt" content="{{ ogImageAlt or config.banner.alt }}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" href="/assets/icon-48.png" type="image/png" sizes="48x48">
