@@ -44,7 +44,7 @@ module.exports = {
   // { name, by, summary, href (optional), date: "MM/DD/YYYY" }
   members: [],
   membersEmpty:
-    "Built something close to the hardware on your own? Tell us in Discord or email <a href='mailto:ieeecsucf@gmail.com'>ieeecsucf@gmail.com</a>, and we'll feature it here and on LinkedIn.",
+    "Built something close to the hardware on your own? Tell us in Discord or email <!--email_off--><a href='mailto:ieeecsucf@gmail.com'>ieeecsucf@gmail.com</a><!--/email_off-->, and we'll feature it here and on LinkedIn.",
 
   // workshop slides and code
   workshops: [

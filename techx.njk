@@ -7,6 +7,26 @@ fonts: "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;0,80
 ---
 {#- laid out like a chip datasheet / register reference. Facts live in _data/techx.js. -#}
 {%- set t = techx -%}
+{#- schema.org Event so Google can list TechX in event results. Room is TBA until December reservations. -#}
+<script type="application/ld+json">
+{{ {
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": t.name,
+  "description": "A free one-day event at UCF on computer architecture and low-level programming, with talks, panels, workshops and Nano Mentoring. Part of IEEE CS SYP TechX.",
+  "startDate": "2027-01-23T10:00:00-05:00",
+  "endDate": "2027-01-23T17:00:00-05:00",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "isAccessibleForFree": true,
+  "url": config.site.url + "/techx",
+  "image": [config.site.url + "/assets/techx/techx-logo.png"],
+  "location": { "@type": "Place", "name": "University of Central Florida", "address": { "@type": "PostalAddress", "streetAddress": "4000 Central Florida Blvd", "addressLocality": "Orlando", "addressRegion": "FL", "postalCode": "32816", "addressCountry": "US" } },
+  "offers": { "@type": "Offer", "price": 0, "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": t.links.register },
+  "performer": { "@type": "Organization", "name": config.site.pageTitle, "url": config.site.url + "/" },
+  "organizer": { "@type": "Organization", "name": config.site.pageTitle, "url": config.site.url + "/" }
+} | dump(2) | safe }}
+</script>
 <div class="ds">
   <div class="ds-title">
     <div class="lock"><img src="/assets/techx/techx-logo.png" alt="IEEE CS SYP TechX"><span>BARE METAL</span></div>
@@ -51,5 +71,5 @@ fonts: "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;0,80
   <p>Students meet one-on-one with mentors from industry and research. Mentoring runs for about three hours during the event, in person at UCF.</p>
 
   <h2><span class="n">5</span>About TechX</h2>
-  <p>TechX is an event series from the IEEE Computer Society's Students and Young Professionals (SYP) program. Student chapters host their own TechX events. More on the <a href="{{ t.links.syp }}">IEEE CS SYP site</a>. Questions go to <a href="mailto:{{ t.email }}">{{ t.email }}</a>.</p>
+  <p>TechX is an event series from the IEEE Computer Society's Students and Young Professionals (SYP) program. Student chapters host their own TechX events. More on the <a href="{{ t.links.syp }}">IEEE CS SYP site</a>. Questions go to <!--email_off--><a href="mailto:{{ t.email }}">{{ t.email }}</a><!--/email_off-->.</p>
 </div>

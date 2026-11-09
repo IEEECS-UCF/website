@@ -64,6 +64,7 @@ async function upcomingEvents(request, env, waitUntil) {
       start: e.scheduled_start_time,
       end: e.scheduled_end_time,
       location: e.entity_metadata?.location || "Discord",
+      image: e.image ? `https://cdn.discordapp.com/guild-events/${e.id}/${e.image}.png?size=1024` : null,
     }));
 
   const stored = new Response(JSON.stringify(events), {
@@ -92,6 +93,7 @@ function row(e, guildId) {
 function eventData(e, guildId, pageUrl) {
   const site = new URL("/", pageUrl).href;
   const room = /^(tba|tbd|discord)?$/i.test(e.location.trim()) ? null : e.location;
+  const chapter = { "@type": "Organization", name: "IEEE Computer Society at UCF", url: site };
   return {
     "@context": "https://schema.org",
     "@type": "Event",
@@ -103,12 +105,23 @@ function eventData(e, guildId, pageUrl) {
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
     isAccessibleForFree: true,
     url: eventLink(e, guildId),
+    // the event's Discord cover image, or the site banner when it has none
+    image: [e.image || new URL("/assets/CS_X_CS_MAIN.jpg", pageUrl).href],
+    // our events are free; Google wants that as a zero-price offer
+    offers: {
+      "@type": "Offer",
+      price: 0,
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+      url: eventLink(e, guildId),
+    },
+    performer: chapter,
     location: {
       "@type": "Place",
       name: room ? `${room}, University of Central Florida` : "University of Central Florida",
       address: CAMPUS,
     },
-    organizer: { "@type": "Organization", name: "IEEE Computer Society at UCF", url: site },
+    organizer: chapter,
   };
 }
 

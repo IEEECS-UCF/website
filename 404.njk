@@ -1,0 +1,11 @@
+---
+layout: base.njk
+permalink: /404.html
+title: Page Not Found
+eleventyExcludeFromCollections: true
+---
+{#- Cloudflare Pages serves this with a 404 status for any path that doesn't exist. Without it, Pages answers unknown paths with the home page and a 200. -#}
+<h1 class="page-title">Page Not Found</h1>
+<div class="prose-block">
+<p>There's nothing at this address. Try the <a href="/">home page</a>, or find us on <a href="{{ config.links.discord }}">Discord</a>.</p>
+</div>

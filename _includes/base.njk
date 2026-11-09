@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-{%- set pageUrl = config.site.url + ("/" if page.url == "/" else page.url) -%}
+{#- Cloudflare Pages serves /x.html at /x and redirects the .html form, so point canonical links at /x -#}
+{%- set pageUrl = config.site.url + (page.url | replace(".html", "")) -%}
 {%- set pageDescription = description or config.site.description -%}
 <title>{% if title %}{{ title }} · {% endif %}{{ config.site.pageTitle }}</title>
 <meta name="description" content="{{ pageDescription }}">
@@ -75,7 +76,7 @@
 <footer class="footer">
   <p class="footer-legal">
     Last updated: {{ config.footer.updated }}<br>
-    Maintained by <a href="mailto:{{ config.footer.emailHref }}">{{ config.footer.emailText }}</a><br>
+    Maintained by <!--email_off--><a href="mailto:{{ config.footer.emailHref }}">{{ config.footer.emailText }}</a><!--/email_off--><br>
     {{ config.footer.legal | safe }}
   </p>
   <div class="footer-counter">
