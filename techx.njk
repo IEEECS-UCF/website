@@ -7,7 +7,7 @@ fonts: "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;0,80
 ---
 {#- laid out like a chip datasheet / register reference. Facts live in _data/techx.js. -#}
 {%- set t = techx -%}
-{#- schema.org Event so Google can list TechX in event results. Room is TBA until December reservations. -#}
+{#- schema.org Event so Google can list TechX in event results. -#}
 <script type="application/ld+json">
 {{ {
   "@context": "https://schema.org",
@@ -21,7 +21,7 @@ fonts: "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;0,80
   "isAccessibleForFree": true,
   "url": config.site.url + "/techx",
   "image": [config.site.url + "/assets/techx/techx-logo.png"],
-  "location": { "@type": "Place", "name": "University of Central Florida", "address": { "@type": "PostalAddress", "streetAddress": "4000 Central Florida Blvd", "addressLocality": "Orlando", "addressRegion": "FL", "postalCode": "32816", "addressCountry": "US" } },
+  "location": { "@type": "Place", "name": "Live Oak Event Center, Ferrell Commons, University of Central Florida", "address": { "@type": "PostalAddress", "streetAddress": "4000 Central Florida Blvd", "addressLocality": "Orlando", "addressRegion": "FL", "postalCode": "32816", "addressCountry": "US" } },
   "offers": { "@type": "Offer", "price": 0, "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": t.links.register },
   "performer": { "@type": "Organization", "name": config.site.pageTitle, "url": config.site.url + "/" },
   "organizer": { "@type": "Organization", "name": config.site.pageTitle, "url": config.site.url + "/" }
@@ -46,7 +46,7 @@ fonts: "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;0,80
     <div class="cells" aria-hidden="true"><span>SAT</span><span class="hi">JAN 23</span><span>2027</span><span>10 AM&#8211;5 PM</span></div>
     <div class="names" aria-hidden="true"><span>DAY</span><span>DATE</span><span>YEAR</span><span>TIME</span></div>
   </div>
-  <p class="reg-cap">UCF main campus, Orlando.</p>
+  <p class="reg-cap">{{ t.place }}, Orlando.</p>
   <a class="go" href="{{ t.links.register }}">Register on vTools &#8594;</a>
 
   <h2><span class="n">1</span>Overview</h2>

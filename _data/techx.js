@@ -5,7 +5,7 @@ module.exports = {
   date: "January 23, 2027",
   dateShort: "JAN 23, 2027",
   time: "10 AM to 5 PM",
-  place: "UCF main campus, Orlando",
+  place: "Live Oak Event Center, Ferrell Commons, UCF",
   topic: "Computer architecture and low-level programming",
   email: "ieeecsucf@gmail.com",
   deadline: "Friday, January 15, 2027",
