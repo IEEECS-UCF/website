@@ -89,6 +89,15 @@ function row(e, guildId) {
     `<td>${when} &#183; ${escape(e.location)}</td></tr>`;
 }
 
+// createdAt is when a Discord snowflake id was made, as an ISO time.
+function createdAt(id) {
+  try {
+    return new Date(Number(BigInt(id) >> 22n) + 1420070400000).toISOString();
+  } catch {
+    return undefined;
+  }
+}
+
 // schema.org Event, so search engines can show our events in their results
 function eventData(e, guildId, pageUrl) {
   const site = new URL("/", pageUrl).href;
@@ -113,6 +122,8 @@ function eventData(e, guildId, pageUrl) {
       price: 0,
       priceCurrency: "USD",
       availability: "https://schema.org/InStock",
+      // open from when the Discord event was made (its id holds that time)
+      validFrom: createdAt(e.id),
       url: eventLink(e, guildId),
     },
     performer: chapter,
