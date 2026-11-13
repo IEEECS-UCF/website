@@ -8,7 +8,8 @@
 {%- set pageDescription = description or config.site.description -%}
 <title>{% if title %}{{ title }} · {% endif %}{{ config.site.pageTitle }}</title>
 <meta name="description" content="{{ pageDescription }}">
-<link rel="canonical" href="{{ pageUrl }}">
+{% if noindex %}<meta name="robots" content="noindex">
+{% endif %}<link rel="canonical" href="{{ pageUrl }}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{{ config.site.pageTitle }}">
 <meta property="og:title" content="{% if title %}{{ title }} · {% endif %}{{ config.site.pageTitle }}">
@@ -34,9 +35,7 @@
   "sameAs": [config.links.instagram, config.links.linkedin, config.links.github, config.links.knightconnect, config.links.discord]
 } | dump(2) | safe }}
 </script>
-{% if fonts %}<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="{{ fonts }}">
-{% endif %}<link rel="stylesheet" href="/assets/style.css">
+<link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>

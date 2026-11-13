@@ -5,9 +5,9 @@ title: "TechX: Bare Metal"
 description: "Free one-day event at UCF on Saturday, January 23, 2027, on computer architecture and low-level programming. Part of the IEEE CS SYP TechX series."
 ogImage: /assets/techx/techx-og.png
 ogImageAlt: "TechX: Bare Metal flyer: free one-day event, Saturday, January 23, 2027 at UCF. Register at csucf.org/techx"
-fonts: "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;0,800;1,800&family=IBM+Plex+Mono:wght@400;600&family=Open+Sans:wght@400;600&display=swap"
 ---
-{#- laid out like a chip datasheet / register reference. Facts live in _data/techx.js. -#}
+{#- Uses the site's own classes (.page-title, .section-head, .prose-block, .table) so the
+    page matches the home page. Facts live in _data/techx.js. -#}
 {%- set t = techx -%}
 {#- schema.org Event so Google can list TechX in event results. -#}
 <script type="application/ld+json">
@@ -15,7 +15,6 @@ fonts: "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;0,80
   "@context": "https://schema.org",
   "@type": "Event",
   "name": t.name,
-  "description": "A free one-day event at UCF on computer architecture and low-level programming, with talks, panels, workshops and Nano Mentoring. Part of IEEE CS SYP TechX.",
   "startDate": "2027-01-23T10:30:00-05:00",
   "endDate": "2027-01-23T17:00:00-05:00",
   "eventStatus": "https://schema.org/EventScheduled",
@@ -29,50 +28,63 @@ fonts: "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;0,80
   "organizer": { "@type": "Organization", "name": config.site.pageTitle, "url": config.site.url + "/" }
 } | dump(2) | safe }}
 </script>
-<div class="ds">
-  <div class="ds-title">
-    <div class="lock"><img src="/assets/techx/techx-logo.png" alt="IEEE CS SYP TechX"><span>BARE METAL</span></div>
-    <div class="meta">
-      <p><span>EVENT OVERVIEW</span><span>FREE &#183; IN PERSON</span></p>
-      <h1>TechX: Bare Metal<small>A one-day event on computer architecture and low-level programming</small></h1>
-      <div class="logos">
-        <img src="/assets/techx/syp80-black.png" alt="IEEE Computer Society SYP Activities, 80th anniversary">
-        <img src="/assets/techx/chapter-mark.png" alt="IEEE Computer Society at UCF">
-        <img class="ieee" src="/assets/techx/ieee-black.png" alt="IEEE">
-      </div>
-    </div>
-  </div>
+<h1 class="page-title">TechX: Bare Metal</h1>
+<p class="dateline">Part of IEEE CS SYP's TechX Series</p>
 
-  <div class="reg" role="group" aria-label="Saturday, January 23, 2027, 10:30 AM to 5 PM, Live Oak Event Center, UCF Orlando">
-    <div class="bits" aria-hidden="true"><span><i>31</i><i>28</i></span><span><i>27</i><i>16</i></span><span><i>15</i><i>8</i></span><span><i>7</i><i>0</i></span></div>
-    <div class="cells" aria-hidden="true"><span>SAT</span><span class="hi">JAN 23</span><span>2027</span><span>10:30 AM&#8211;5 PM</span></div>
-    <div class="names" aria-hidden="true"><span>DAY</span><span>DATE</span><span>YEAR</span><span>TIME</span></div>
-  </div>
-  <p class="reg-cap">{{ t.place }}, Orlando.</p>
-  <a class="go" href="{{ t.links.register }}">Register on vTools &#8594;</a>
-  <p class="reg-cap"><a href="/assets/techx/techx-register-flyer.png">Flyer (PNG)</a></p>
+<ul class="techx-logos">
+  <li><img class="wordmark" src="/assets/techx/techx-logo.png" alt="IEEE CS SYP TechX"></li>
+  <li><img src="/assets/techx/syp80-black.png" alt="IEEE Computer Society SYP Activities, 80th anniversary"></li>
+  <li><img src="/assets/techx/chapter-mark.png" alt="IEEE Computer Society at UCF"></li>
+  <li class="ieee"><img src="/assets/techx/ieee-black.png" alt="IEEE"></li>
+</ul>
 
-  <h2><span class="n">1</span>Overview</h2>
-  <p>TechX: Bare Metal is a free one-day event at UCF on computer architecture and low-level programming, hosted by IEEE Computer Society at UCF as part of IEEE CS SYP TechX. The day has talks, panels, workshops and Nano Mentoring.</p>
+<h2 class="section-head">Event Details</h2>
+<table class="table">
+  <caption class="visually-hidden">TechX: Bare Metal event details</caption>
+  <tbody>
+    <tr><th scope="row" class="table-label">Date</th><td>{{ t.day }}, {{ t.date }}</td></tr>
+    <tr><th scope="row" class="table-label">Time</th><td>{{ t.time }}</td></tr>
+    <tr><th scope="row" class="table-label">Place</th><td>{{ t.place }}, Orlando &#183; In person</td></tr>
+    <tr><th scope="row" class="table-label">Cost</th><td>Completely Free!</td></tr>
+  </tbody>
+</table>
+<p class="btn-row">
+  <a class="btn btn-cta" href="{{ t.links.register }}">Register on vTools &#8594;</a>
+  <a class="btn" href="/assets/techx/techx-register-flyer.png">Flyer</a>
+</p>
 
-  <h2><span class="n">2</span>Ways to take part</h2>
-  <table>
-    <thead><tr><th scope="col">ROLE</th><th scope="col">WHAT YOU DO</th><th scope="col">DEADLINE</th><th scope="col">LINK</th></tr></thead>
-    <tbody>
-      <tr><td class="sig">ATTEND</td><td>Come to the talks, panels and workshops</td><td class="due"></td><td><a href="{{ t.links.register }}">vTools</a></td></tr>
-      <tr><td class="sig">SPEAK</td><td>Give a talk, run a workshop or join a panel. Companies and individuals can apply.</td><td class="due">{{ t.deadline }}</td><td><a href="{{ t.links.speak }}">Speaker form</a></td></tr>
-      <tr><td class="sig">MENTOR</td><td>Meet students one-on-one about careers, grad school and technical topics.</td><td class="due">{{ t.deadline }}</td><td><a href="{{ t.links.mentor }}">Mentor form</a></td></tr>
-      <tr><td class="sig">MENTEE</td><td>Sign up for a one-on-one with a mentor</td><td class="due">{{ t.deadline }}</td><td><a href="{{ t.links.mentee }}">Student form</a></td></tr>
-    </tbody>
-  </table>
+<h2 class="section-head">Overview</h2>
+<div class="prose-block">
+<p>TechX: Bare Metal is a free one-day event at UCF on computer architecture and low-level programming. The day has talks, panels, workshops and Nano Mentoring.</p>
+<p>We host it as part of TechX, a series of student-run events from the IEEE Computer Society's Students and Young Professionals (SYP) program. The <a href="{{ t.links.syp }}">IEEE CS SYP site</a> has more on the series, and you can email us at <!--email_off--><a href="mailto:{{ t.email }}">{{ t.email }}</a><!--/email_off--> with any questions.</p>
+</div>
 
-  <h2><span class="n">3</span>Talk topics</h2>
-  <ul class="feat">{% for topic in t.speakerTopics %}<li>{{ topic }}</li>{% endfor %}</ul>
-  <p style="margin-top:10px">The schedule goes up here once speakers are confirmed.</p>
+<h2 class="section-head">Come Join Us</h2>
+<table class="table table-actions">
+  <caption class="visually-hidden">Ways to take part in TechX</caption>
+  <thead>
+    <tr>
+      <th scope="col">Role</th>
+      <th scope="col">What You Do</th>
+      <th scope="col">Deadline</th>
+      <th scope="col">Link</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="table-role"><b>Attend</b></td><td>Come to the talks, panels and workshops</td><td class="table-date"></td><td><a href="{{ t.links.register }}">vTools</a></td></tr>
+    <tr><td class="table-role"><b>Speak</b></td><td>Give a talk, run a workshop or join a panel. Companies and individuals can apply.</td><td class="table-date">{{ t.deadline }}</td><td><a href="{{ t.links.speak }}">Speaker form</a></td></tr>
+    <tr><td class="table-role"><b>Mentor</b></td><td>Meet students one-on-one about careers and grad school.</td><td class="table-date">{{ t.deadline }}</td><td><a href="{{ t.links.mentor }}">Mentor form</a></td></tr>
+    <tr><td class="table-role"><b>Mentee</b></td><td>Sign up for a one-on-one with a mentor</td><td class="table-date">{{ t.deadline }}</td><td><a href="{{ t.links.mentee }}">Student form</a></td></tr>
+  </tbody>
+</table>
 
-  <h2><span class="n">4</span>Nano Mentoring</h2>
-  <p>Students meet one-on-one with mentors from industry and research. Mentoring runs for about three hours during the event, in person at UCF.</p>
+<h2 class="section-head">Talk Topics</h2>
+<div class="prose-block">
+<ul>{% for topic in t.speakerTopics %}<li>{{ topic }}</li>{% endfor %}</ul>
+<p>We're still confirming speakers. Check back here for the full schedule once it's set.</p>
+</div>
 
-  <h2><span class="n">5</span>About TechX</h2>
-  <p>TechX is an event series from the IEEE Computer Society's Students and Young Professionals (SYP) program. Student chapters host their own TechX events. More on the <a href="{{ t.links.syp }}">IEEE CS SYP site</a>. Questions go to <!--email_off--><a href="mailto:{{ t.email }}">{{ t.email }}</a><!--/email_off-->.</p>
+<h2 class="section-head">Nano Mentoring</h2>
+<div class="prose-block">
+<p>Students meet one-on-one with engineers and researchers. Mentoring runs for about three hours during the event.</p>
 </div>

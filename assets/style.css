@@ -21,6 +21,7 @@
   --ui: Verdana, Geneva, Arial, sans-serif;
   --body: "Times New Roman", Times, serif;
   --shell: 760px;
+  --label-col: 170px;   /* shared gutter for .table-aligned tables */
 }
 
 html, body { margin: 0; padding: 0; }
@@ -210,6 +211,14 @@ a:hover, a:focus { color: var(--link-hover); }
 
 .prose-block p:last-child { margin-bottom: 22px; }
 
+.prose-block ul {
+  margin: 0 0 12px;
+  padding-left: 22px;
+  font: 14px/1.75 var(--body);
+}
+
+.prose-block li { margin-bottom: 2px; }
+
 .new-flag {
   color: var(--link-hover);
   font-size: 10px;
@@ -230,11 +239,15 @@ a:hover, a:focus { color: var(--link-hover); }
 .table th {
   text-align: left;
   padding: 5px 10px 5px 0;
-  border-bottom: 1px solid var(--dim);
+  border-bottom: 1px solid var(--hair);
   font: bold 10px/1.6 var(--ui);
   text-transform: uppercase;
   color: #555555;
 }
+
+/* only column headers get the heavy rule. A row header shares the row's hairline,
+   so the rule runs unbroken across the row instead of stubbing under the label. */
+.table thead th { border-bottom-color: var(--dim); }
 
 .table td {
   padding: 6px 10px 6px 0;
@@ -245,20 +258,35 @@ a:hover, a:focus { color: var(--link-hover); }
 
 .table td:last-child { padding-right: 0; }
 
+/* By default a label column shrinks to its content (width:1% + nowrap), which keeps
+   the news, events and techx tables tight. */
+.table-label,
+.table-role,
+.table-date { width: 1%; white-space: nowrap; }
+
 .table-label {
   font-family: var(--ui);
   font-size: 12px;
   font-weight: bold;
-  width: 28%;
+  padding-right: 18px;
 }
 
-.table-role { width: 28%; }
+.table-role { padding-right: 18px; }
 
 .table-date {
-  white-space: nowrap;
   font: 11px/1.7 var(--ui);
   color: #666666;
 }
+
+/* .table-aligned opts a table into the shared gutter. Get Involved and the officer
+   list sit close together and read as one block, so their values line up at the
+   same x. Wide enough for "Graduate Student Advisor" on one line. */
+.table-aligned .table-label,
+.table-aligned .table-role { width: var(--label-col); }
+
+/* four-column tables: the trailing link column holds a two-word form name, which
+   would otherwise be the first thing the browser breaks. */
+.table-actions td:last-child { white-space: nowrap; }
 
 /* -- footer -- */
 
@@ -367,53 +395,79 @@ a:hover, a:focus { color: var(--link-hover); }
   .footer-counter { text-align: left; }
 
   .table-label,
-  .table td { display: block; width: auto; }
+  .table td,
+  .table-aligned .table-label,
+  .table-aligned .table-role { display: block; width: auto; white-space: normal; }
   .table td { border-bottom: none; padding-bottom: 2px; }
   .table tr { display: block; border-bottom: 1px solid var(--hair); padding: 6px 0; }
   .table thead { display: none; }
 }
 
-/* techx page: laid out like a chip datasheet. SYP palette (Prussian Blue, Heat Wave), Montserrat headings (TechX brand guidelines) */
-  .ds { --blue: #00629b; --orange: #ffa300; --ink: #111418; --mono: "IBM Plex Mono", Menlo, monospace; font: 15px/1.55 "Open Sans", var(--ui); color: var(--ink); }
-  .ds-title { display: grid; grid-template-columns: auto 1fr; gap: 0; border: 2px solid var(--ink); }
-  .ds-title .lock { position: relative; width: 250px; padding: 16px 18px 20px; border-right: 2px solid var(--ink); }
-  .ds-title .lock img { width: 100%; display: block; }
-  .ds-title .lock span { position: absolute; right: 18px; bottom: 10px; font: italic 800 19px/1 Montserrat; }
-  .ds-title .meta { display: grid; grid-template-rows: auto 1fr auto; }
-  .ds-title .meta p { margin: 0; padding: 8px 12px; font: 600 11px/1.4 var(--mono); letter-spacing: .04em; border-bottom: 1px solid var(--ink); display: flex; justify-content: space-between; gap: 10px; }
-  .ds-title h1 { margin: 0; padding: 12px; font: 800 clamp(24px, 4.2vw, 34px)/1.05 Montserrat; align-self: center; }
-  .ds-title h1 small { display: block; margin-top: 6px; font: 600 13px/1.35 "Open Sans"; color: #4a5058; }
-  .ds-title .logos { display: flex; align-items: center; gap: 14px; padding: 9px 12px; border-top: 1px solid var(--ink); }
-  .ds-title .logos img { height: 22px; width: auto; display: block; }
-  .ds-title .logos .ieee { height: 14px; margin-left: auto; }
-  .ds h2 { margin: 30px 0 10px; font: 800 18px/1.2 Montserrat; display: flex; gap: 12px; align-items: baseline; border-bottom: 3px solid var(--orange); padding-bottom: 6px; }
-  .ds h2 .n { font: 600 14px/1 var(--mono); color: var(--blue); }
-  .ds p { margin: 0 0 10px; }
-  .reg { margin: 18px 0 6px; }
-  .reg .bits, .reg .cells, .reg .names { display: grid; grid-template-columns: 2fr 3fr 2fr 4fr; }
-  .reg .bits span { font: 400 11px/1 var(--mono); color: #6b7179; display: flex; justify-content: space-between; padding: 0 3px 4px; }
-  .reg .cells span { border: 2px solid var(--ink); margin-left: -2px; padding: 14px 4px; text-align: center; font: 800 clamp(15px, 3.4vw, 26px)/1 Montserrat; white-space: nowrap; }
-  .reg .cells span:first-child { margin-left: 0; }
-  .reg .cells span.hi { background: var(--orange); }
-  .reg .names span { font: 600 11px/1 var(--mono); color: var(--blue); text-align: center; padding-top: 6px; letter-spacing: .06em; }
-  .reg-cap { font: 400 12px/1.4 var(--mono); color: #6b7179; margin: 6px 0 0; }
-  .ds table { width: 100%; border-collapse: collapse; font-size: 14px; }
-  .ds th, .ds td { text-align: left; vertical-align: top; padding: 9px 10px; border-bottom: 1px solid #d5d9de; }
-  .ds thead th { font: 600 11px/1.3 var(--mono); letter-spacing: .06em; color: #fff; background: var(--ink); border: 0; }
-  .ds td.sig { font: 600 13px/1.4 var(--mono); color: var(--blue); white-space: nowrap; }
-  .ds td.due { white-space: nowrap; font-family: var(--mono); font-size: 13px; }
-  .ds .go { display: inline-block; margin: 14px 0 4px; background: var(--orange); color: var(--ink); text-decoration: none; font: 800 16px/1 Montserrat; padding: 13px 22px; border: 2px solid var(--ink); box-shadow: 4px 4px 0 var(--ink); }
-  .ds .go:hover, .ds .go:focus { background: var(--ink); color: #fff; }
-  .ds ul.feat { margin: 0; padding: 0 0 0 18px; columns: 2; column-gap: 28px; }
-  .ds ul.feat li { margin: 0 0 4px; break-inside: avoid; }
-  @media (max-width: 620px) {
-    .ds-title { grid-template-columns: 1fr; }
-    .ds-title .lock { width: auto; max-width: 300px; border-right: 0; border-bottom: 2px solid var(--ink); }
-    .reg .bits { display: none; }
-    .reg .cells, .reg .names { grid-template-columns: 1fr 1fr; }
-    .reg .cells span:nth-child(3) { margin-left: 0; }
-    .reg .cells span { margin-top: -2px; }
-    .reg .names { display: none; }
-    .ds ul.feat { columns: 1; }
-    .ds td.due { white-space: normal; }
-  }
+/* -- techx page: logo banner and a raised gold button, in the era's idiom -- */
+
+.techx-logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
+  background: var(--band);
+  border: 1px solid var(--rule);
+  padding: 18px 20px;
+  margin: 0 0 22px;
+  list-style: none;
+}
+
+.techx-logos img { height: 38px; width: auto; display: block; }
+.techx-logos .wordmark { height: 62px; }
+.techx-logos .ieee { margin-left: auto; }
+.techx-logos .ieee img { height: 22px; }
+
+.btn-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 2px 0 22px;
+}
+
+/* early-2000s gloss: a vertical gradient and one top inner highlight. No bevel
+   borders on the sides, no deep shadow. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 1.5rem;
+  padding: .4rem .85rem;
+  font: bold .65rem/1 var(--ui);
+  color: #333333;
+  text-decoration: none;
+  background: linear-gradient(180deg, #fdfdfd 0%, #e2e2e2 100%);
+  border: 1px solid #999999;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .7);
+}
+
+/* hold the label colour against the global a:hover rule, nothing more */
+.btn:hover, .btn:focus { color: #333333; }
+
+.btn:active { background: linear-gradient(180deg, #e8e8e8 0%, #d5d5d5 100%); }
+
+/* the one gold CTA: larger, more padding, and a light lift off the page */
+.btn-cta {
+  padding: .55rem 1.15rem;
+  font-size: .75rem;
+  color: var(--ink);
+  background: linear-gradient(180deg, #ffe88a 0%, var(--gold) 50%, #e8af00 100%);
+  border-color: #b08a00;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .45);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .65),
+    0 1px 2px rgba(0, 0, 0, .18);
+}
+
+.btn-cta:hover, .btn-cta:focus { color: var(--ink); }
+
+.btn-cta:active {
+  background: linear-gradient(180deg, #e8af00 0%, var(--gold) 100%);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, .2);
+}
