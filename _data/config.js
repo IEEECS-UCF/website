@@ -1,5 +1,6 @@
 // everything on the page that isn't a post
 const readableDate = require("../lib/readable-date.js");
+const techx = require("./techx.js");
 
 const links = {
   discord: "https://go.csucf.org/discord",
@@ -38,6 +39,7 @@ module.exports = {
   // navDisabled: "disabled link",
 
   ticker: [
+    `Join us for <a href="/techx">${techx.name}</a> on ${techx.date}, free and open to all!`,
     "We're an official UCF RSO! Join us on <a href='https://knightconnect.campuslabs.com/engage/organization/ieee-cs'>KnightConnect</a>!",
     "Follow us on <a href='https://go.csucf.org/ig'>Instagram</a>!",
     "Join us on <a href='https://go.csucf.org/discord'>Discord</a>!",

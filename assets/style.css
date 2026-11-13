@@ -57,6 +57,8 @@ a:hover, a:focus { color: var(--link-hover); }
 
 /* -- shell -- */
 
+/* flex column so .content absorbs the slack and the footer stays at the bottom on
+   short pages (404, privacy) instead of riding up under the text. */
 .shell {
   max-width: var(--shell);
   margin: 0 auto;
@@ -64,6 +66,9 @@ a:hover, a:focus { color: var(--link-hover); }
   border-left: 1px solid var(--dim);
   border-right: 1px solid var(--dim);
   min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* -- masthead -- */
@@ -179,10 +184,12 @@ a:hover, a:focus { color: var(--link-hover); }
 
 /* -- content -- */
 
-.content { padding: 18px 16px 24px; }
+.content { padding: 18px 16px 24px; flex: 1; }
 
+/* 12px, not 2px: the old value only worked when a .dateline followed and supplied
+   its own gap. Pages without one ran the heading straight into the body. */
 .page-title {
-  margin: 0 0 2px;
+  margin: 0 0 12px;
   font: bold 17px/1.25 var(--body);
 }
 
@@ -209,7 +216,9 @@ a:hover, a:focus { color: var(--link-hover); }
   text-wrap: pretty;
 }
 
-.prose-block p:last-child { margin-bottom: 22px; }
+/* 22px here was only ever visible when a .table followed; before a .section-head it
+   collapses under that heading's 24px top margin anyway. */
+.prose-block p:last-child { margin-bottom: 10px; }
 
 .prose-block ul {
   margin: 0 0 12px;
